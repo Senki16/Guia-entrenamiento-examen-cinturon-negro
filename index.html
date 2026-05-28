@@ -323,17 +323,26 @@
   }
   .gallery .tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px var(--shadow)}
   .gallery .tile .ph{
-    width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a0a0c;
+    width:100%;aspect-ratio:4/3;overflow:hidden;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,.6), transparent 60%),
+      linear-gradient(160deg,#f4f1ea,#e6dfcd);
     display:flex;align-items:center;justify-content:center;
+    padding:.5rem;
   }
-  .gallery .tile .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-  .gallery .tile:hover .ph img{transform:scale(1.05)}
+  .gallery .tile .ph img{
+    max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;transition:transform .4s ease;
+    border-radius:6px;
+  }
+  .gallery .tile:hover .ph img{transform:scale(1.04)}
   .gallery .tile figcaption{
     padding:.75rem .9rem;font-size:.82rem;color:#46443b;background:#fff;
     border-top:2px solid var(--red);line-height:1.4;flex:1;
   }
   .gallery.portrait .tile .ph{aspect-ratio:3/4}
   .gallery.square .tile .ph{aspect-ratio:1/1}
+  .gallery.tall .tile .ph{aspect-ratio:3/4}
 
   /* Banner reducido */
   .banner-compact{max-width:760px;margin:1.4rem auto;border-radius:14px;overflow:hidden;
@@ -491,7 +500,7 @@
     <!-- EXAMENES DE ASCENSO -->
     <h3 class="section-title">Exámenes de Ascenso<small>승급 심사 · Promoción de grados</small></h3>
     <p class="section-intro">Cada semestre nuestros alumnos presentan exámenes de ascenso para escalar en la jerarquía de cinturones. Estas ceremonias son un punto culminante en el camino marcial: combinan técnica, disciplina y compromiso.</p>
-    <div class="gallery">
+    <div class="gallery tall">
       <figure class="tile">
         <div class="ph"><img src="assets/examen_ascenso_grado_alumnos_del_maestro.png" alt="Examen de ascenso de grado"></div>
         <figcaption>Grupo de alumnos presentando su examen semestral de ascenso de grado.</figcaption>
@@ -524,8 +533,24 @@
 
     <!-- NUESTROS ALUMNOS -->
     <h3 class="section-title">Nuestros Alumnos<small>우리 학생들 · La familia Dragón Rojo</small></h3>
-    <p class="section-intro">El corazón del club son sus alumnos: niños, jóvenes y adultos que cada semana entrenan con disciplina y forjan su carácter. Aquí están sus mejores momentos en entrenamientos, seminarios y competencias.</p>
+    <p class="section-intro">El corazón del club son sus alumnos: niños, jóvenes y adultos que cada semana entrenan con disciplina y forjan su carácter. Aquí están sus mejores momentos en entrenamientos, seminarios y competencias — incluso llevando el espíritu del Dragón Rojo hasta Corea del Sur.</p>
+
+    <div class="callout" style="background:linear-gradient(135deg,#171519,#2a121a);margin-bottom:1.4rem">
+      <h4>Nuestros alumnos en Corea del Sur 🇰🇷</h4>
+      <ul>
+        <li>El alumno <strong>David Zuluaga</strong> entrena junto al equipo de taekwondo de la <strong>Universidad Kyung Hee</strong>, una de las cunas del taekwondo mundial, llevando el legado del Club Dragón Rojo a la tierra natal del arte marcial coreano.</li>
+      </ul>
+    </div>
+
     <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/Alumno_David_Zuluaga_entrenando_con_equipo_de_taekwondo_universidad_kyung_hee_en_Corea_del_Sur.jpeg" alt="David Zuluaga entrenando con el equipo Kyung Hee en Corea del Sur"></div>
+        <figcaption>Alumno David Zuluaga entrenando con el equipo de taekwondo de la Universidad Kyung Hee — Corea del Sur.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/Alumno_David_Zuluaga_entrenando_con_equipo_de_taekwondo_universidad_kyung_hee_en_Corea_del_Sur_2.jpeg" alt="David Zuluaga junto al equipo Kyung Hee, Seúl"></div>
+        <figcaption>David Zuluaga junto al equipo de taekwondo Kyung Hee — formación internacional en Seúl.</figcaption>
+      </figure>
       <figure class="tile">
         <div class="ph"><img src="assets/master_entreno.png" alt="Maestro en entrenamiento con alumnos"></div>
         <figcaption>Clases dirigidas por el Maestro en el dojang del club.</figcaption>
@@ -703,7 +728,7 @@
     <!-- 3. ENTRENAMIENTO -->
     <h3 class="section-title">Entrenamiento<small>훈련 · Técnica del Maestro</small></h3>
     <p class="section-intro">El Maestro continúa entrenando y perfeccionando sus técnicas día a día — ejemplo de disciplina, precisión y espíritu indomable.</p>
-    <div class="gallery">
+    <div class="gallery tall">
       <figure class="tile">
         <div class="ph"><img src="assets/master_frontal.png" alt="Maestro Duber Bairon Gallego - Patada en el dojang"></div>
         <figcaption>Demostración de patada alta frontal con perfecto control corporal.</figcaption>
