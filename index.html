@@ -364,10 +364,7 @@
     <div class="video-block">
       <div class="video-head"><span class="dot"></span><strong>Video guía · Taegeuk 1 al 8 (태극품새)</strong></div>
       <div class="video-frame">
-        <video id="taegeukVideo" controls preload="metadata" playsinline poster="">
-          <source src="video/taegeuk-poomsae-1-8.mp4" type="video/mp4">
-          Tu navegador no puede reproducir este video. Descarga el archivo MP4 para verlo.
-        </video>
+        <div id="ytPlayer"></div>
       </div>
       <div class="chapters">
         <button class="chip" type="button" data-t="0"><span class="t">Taegeuk 1</span><span class="k">태극1장 · 0:00</span></button>
@@ -379,8 +376,7 @@
         <button class="chip" type="button" data-t="317"><span class="t">Taegeuk 7</span><span class="k">태극7장 · 5:17</span></button>
         <button class="chip" type="button" data-t="379"><span class="t">Taegeuk 8</span><span class="k">태극8장 · 6:19</span></button>
       </div>
-      <p class="video-note">Cada botón <strong>salta a esa taegeuk en el minuto exacto</strong> dentro del video. El archivo de video debe llamarse <code>taegeuk-poomsae-1-8.mp4</code> y estar dentro de la carpeta <code>video/</code>.</p>
-      <p class="video-fallback">Si el video no carga, <a href="video/taegeuk-poomsae-1-8.mp4" download>descárgalo aquí</a> y ábrelo directamente en tu reproductor.</p>
+      <p class="video-note">Cada botón <strong>salta a esa taegeuk en el minuto exacto</strong> dentro del video.</p>
     </div>
   </section>
 
@@ -563,18 +559,39 @@
       li.style.textDecoration=on?'none':'line-through';
     });
   });
-  // ===== Reproductor MP4 local: saltar a cada taegeuk =====
-  const video = document.getElementById('taegeukVideo');
+  // ===== Reproductor YouTube: saltar a cada taegeuk =====
+  var ytPlayer;
+  var ytReady = false;
+
+  // Carga la API de YouTube de forma asíncrona
+  var tag = document.createElement('script');
+  tag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(tag);
+
+  // Callback requerido por la API
+  window.onYouTubeIframeAPIReady = function() {
+    ytPlayer = new YT.Player('ytPlayer', {
+      videoId: 'UYlfxTCJTyQ',
+      playerVars: {
+        rel: 0,
+        modestbranding: 1,
+        playsinline: 1
+      },
+      events: {
+        onReady: function() { ytReady = true; }
+      }
+    });
+  };
+
   document.querySelectorAll('.chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
-      const t = parseInt(chip.dataset.t,10);
+      const t = parseInt(chip.dataset.t, 10);
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
-      if(video){
-        video.currentTime = t;
-        const p = video.play();
-        if(p && p.catch) p.catch(()=>{}); // ignora bloqueo de autoplay
-        video.scrollIntoView({behavior:'smooth',block:'center'});
+      if(ytReady && ytPlayer){
+        ytPlayer.seekTo(t, true);
+        ytPlayer.playVideo();
+        document.getElementById('ytPlayer').scrollIntoView({behavior:'smooth', block:'center'});
       }
     });
   });
