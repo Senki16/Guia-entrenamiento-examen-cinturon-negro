@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guía de Examen · Cinta Negra Taekwondo</title>
+<title>Club Taekwondo Dragón Rojo · Envigado, Antioquia</title>
+<meta name="description" content="Club Taekwondo Dragón Rojo — Envigado, Antioquia. Clases de taekwondo para niños, jóvenes y adultos. Dirigido por el Maestro Duber Bairon Gallego Echeverry, 7° Dan.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Serif+KR:wght@400;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,89 +31,155 @@
       radial-gradient(circle at 12% 8%, rgba(200,16,46,.05), transparent 40%),
       radial-gradient(circle at 88% 92%, rgba(212,160,23,.06), transparent 42%);
   }
-  /* grain */
   body::before{
     content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
+  img{max-width:100%;display:block}
 
-  /* ===== HEADER ===== */
+  /* ===== TOP BAR / BRAND ===== */
+  .topbar{
+    position:sticky;top:0;z-index:40;
+    background:rgba(10,10,12,.96);backdrop-filter:blur(10px);
+    border-bottom:3px solid var(--red);
+    color:var(--paper);
+  }
+  .topbar-inner{
+    max-width:1180px;margin:0 auto;display:flex;align-items:center;gap:1rem;
+    padding:.6rem 1.2rem;
+  }
+  .brand{display:flex;align-items:center;gap:.7rem;cursor:pointer;text-decoration:none;color:inherit;flex-shrink:0}
+  .brand img{width:46px;height:46px;border-radius:50%;background:#000}
+  .brand .bt{font-family:'Anton';font-size:1.05rem;line-height:1;letter-spacing:.02em;text-transform:uppercase}
+  .brand .bt span{color:var(--red)}
+  .brand .bk{font-family:'Noto Serif KR',serif;font-size:.62rem;color:var(--gold);letter-spacing:.18em}
+  .menu-toggle{margin-left:auto;background:none;border:1.5px solid var(--paper);color:var(--paper);
+    border-radius:8px;padding:.45rem .7rem;font-size:1.2rem;cursor:pointer;display:none;line-height:1}
+
+  /* ===== MAIN NAV ===== */
+  nav.mainnav{margin-left:auto}
+  nav.mainnav ul{display:flex;gap:.2rem;list-style:none;flex-wrap:wrap;align-items:center}
+  nav.mainnav button{
+    font-family:inherit;background:none;border:1px solid transparent;color:#cfc8ba;
+    font-size:.76rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+    padding:.5rem .8rem;border-radius:99px;cursor:pointer;transition:.18s;
+  }
+  nav.mainnav button:hover{color:#fff;border-color:var(--red);background:rgba(200,16,46,.18)}
+  nav.mainnav button.active{background:var(--red);color:#fff;border-color:var(--red)}
+
+  @media(max-width:920px){
+    .menu-toggle{display:block}
+    nav.mainnav{position:absolute;top:100%;left:0;right:0;margin:0;
+      background:rgba(10,10,12,.98);border-bottom:3px solid var(--red);
+      max-height:0;overflow:hidden;transition:max-height .3s ease}
+    nav.mainnav.open{max-height:520px}
+    nav.mainnav ul{flex-direction:column;gap:0;padding:.5rem 1rem 1rem}
+    nav.mainnav button{width:100%;text-align:left;padding:.85rem .8rem;border-radius:8px}
+  }
+
+  /* ===== VIEWS ===== */
+  .view{display:none;animation:fade .4s ease}
+  .view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+  /* ===== HERO (home) ===== */
   header.hero{
     position:relative;overflow:hidden;
     background:linear-gradient(160deg,#0a0a0c 0%,#171519 55%,#241015 100%);
     color:var(--paper);
-    padding:clamp(3rem,8vw,7rem) 1.5rem clamp(3.5rem,9vw,8rem);
+    padding:clamp(2.6rem,7vw,5.5rem) 1.5rem clamp(3rem,8vw,6rem);
     border-bottom:6px solid var(--red);
   }
   header.hero::after{
     content:"태권도";
     position:absolute;right:-2%;bottom:-12%;
     font-family:'Noto Serif KR',serif;font-weight:700;
-    font-size:clamp(8rem,26vw,24rem);
+    font-size:clamp(8rem,26vw,22rem);
     color:rgba(244,241,234,.04);line-height:.8;letter-spacing:-.02em;
     pointer-events:none;user-select:none;
   }
-  .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+  .hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:2;
+    display:grid;grid-template-columns:1.4fr .9fr;gap:2.5rem;align-items:center}
+  @media(max-width:840px){.hero-inner{grid-template-columns:1fr;gap:2rem}}
   .kicker{
     display:inline-flex;align-items:center;gap:.6rem;
-    font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
-    color:var(--gold);font-weight:700;margin-bottom:1.4rem;
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:1.2rem;
   }
   .kicker::before{content:"";width:34px;height:2px;background:var(--gold)}
   header.hero h1{
     font-family:'Anton',sans-serif;font-weight:400;
-    font-size:clamp(2.8rem,9vw,6.5rem);line-height:.92;
+    font-size:clamp(2.6rem,8vw,5.5rem);line-height:.92;
     text-transform:uppercase;letter-spacing:.01em;
   }
-  header.hero h1 .accent{color:var(--red);
-    -webkit-text-stroke:1px var(--red);}
+  header.hero h1 .accent{color:var(--red);-webkit-text-stroke:1px var(--red)}
   header.hero h1 em{
     display:block;font-family:'Noto Serif KR',serif;font-style:normal;
-    font-size:clamp(1rem,3vw,1.8rem);color:var(--paper-2);
-    letter-spacing:.05em;margin-top:1rem;opacity:.85;font-weight:400;
+    font-size:clamp(1rem,3vw,1.7rem);color:var(--paper-2);
+    letter-spacing:.05em;margin-top:.9rem;opacity:.85;font-weight:400;
   }
-  .hero-sub{max-width:600px;margin-top:1.6rem;color:#cfc8ba;font-size:1.05rem}
-  .belt-bar{display:flex;height:14px;margin-top:2.5rem;border-radius:99px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.4)}
+  .hero-sub{max-width:560px;margin-top:1.4rem;color:#cfc8ba;font-size:1.05rem}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+  .btn{
+    font-family:inherit;font-weight:800;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;
+    padding:.85rem 1.4rem;border-radius:99px;cursor:pointer;border:2px solid transparent;transition:.2s;
+    text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;
+  }
+  .btn-red{background:var(--red);color:#fff;box-shadow:0 6px 18px rgba(200,16,46,.35)}
+  .btn-red:hover{transform:translateY(-2px);background:var(--red-deep)}
+  .btn-ghost{background:transparent;color:var(--paper);border-color:var(--paper)}
+  .btn-ghost:hover{background:var(--paper);color:var(--ink)}
+  .hero-logo{display:grid;place-items:center}
+  .hero-logo img{width:min(320px,80%);filter:drop-shadow(0 14px 40px rgba(200,16,46,.4));
+    border-radius:50%;animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .belt-bar{display:flex;height:14px;margin-top:2.2rem;border-radius:99px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.4)}
   .belt-bar span{flex:1}
   .belt-bar span:nth-child(1){background:#0a0a0c}
   .belt-bar span:nth-child(2){background:var(--red)}
   .belt-bar span:nth-child(3){background:var(--gold)}
 
-  /* ===== NAV ===== */
-  nav.toc{
-    position:sticky;top:0;z-index:20;
-    background:rgba(244,241,234,.88);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-    padding:.7rem 1rem;
-  }
-  nav.toc ul{
-    max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:.4rem;
-    list-style:none;justify-content:center;
-  }
-  nav.toc a{
-    text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.04em;
-    text-transform:uppercase;color:var(--muted);
-    padding:.4rem .8rem;border:1px solid transparent;border-radius:99px;
-    transition:.2s;
-  }
-  nav.toc a:hover{color:var(--red);border-color:var(--red);background:#fff}
+  /* quick stats on home */
+  .stats{max-width:1180px;margin:0 auto;padding:clamp(2rem,5vw,3.5rem) 1.5rem 0;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.2rem;text-align:center;
+    box-shadow:0 2px 10px var(--shadow);position:relative;overflow:hidden}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gold)}
+  .stat .num{font-family:'Anton';font-size:2.6rem;color:var(--red);line-height:1}
+  .stat .lbl{font-size:.82rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-top:.3rem}
 
-  /* ===== LAYOUT ===== */
-  main{max-width:1100px;margin:0 auto;padding:clamp(2rem,5vw,4rem) 1.5rem 5rem;position:relative;z-index:2}
-  section{margin-bottom:clamp(3rem,7vw,5.5rem);scroll-margin-top:80px}
-  .sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:1.8rem;border-bottom:3px solid var(--ink);padding-bottom:.8rem}
-  .sec-num{
-    font-family:'Anton',sans-serif;font-size:clamp(2rem,5vw,3.2rem);
-    color:var(--red);line-height:1;flex-shrink:0;
+  /* home cards grid */
+  .home-grid{max-width:1180px;margin:0 auto;padding:clamp(2rem,5vw,3.5rem) 1.5rem;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .nav-card{
+    background:linear-gradient(150deg,#fff,#f7f3ea);border:1px solid var(--line);border-radius:16px;
+    padding:1.6rem;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 2px 12px var(--shadow);
+    position:relative;overflow:hidden;text-align:left;font-family:inherit;
   }
-  .sec-head h2{
-    font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;
-    font-size:clamp(1.5rem,4vw,2.6rem);line-height:1;letter-spacing:.01em;
-  }
-  .sec-head h2 small{display:block;font-family:'Noto Serif KR',serif;font-size:.85rem;color:var(--muted);letter-spacing:.06em;margin-top:.35rem;font-weight:400;text-transform:none}
+  .nav-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px var(--shadow)}
+  .nav-card::after{content:"→";position:absolute;right:1.3rem;bottom:1.1rem;font-size:1.4rem;color:var(--red);
+    transition:transform .2s}
+  .nav-card:hover::after{transform:translateX(5px)}
+  .nav-card .ic{font-size:1.8rem;margin-bottom:.7rem}
+  .nav-card h3{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:1.25rem;letter-spacing:.02em;margin-bottom:.4rem}
+  .nav-card p{font-size:.9rem;color:var(--muted);max-width:90%}
+  .nav-card .kr{font-family:'Noto Serif KR',serif;color:var(--red-deep);font-size:.8rem;font-weight:600;display:block;margin-top:.5rem}
+
+  /* ===== GENERIC PAGE LAYOUT ===== */
+  .page{max-width:1000px;margin:0 auto;padding:clamp(2rem,5vw,4rem) 1.5rem 5rem;position:relative;z-index:2}
+  .page-head{margin-bottom:2rem;border-bottom:3px solid var(--ink);padding-bottom:1rem}
+  .page-head .ey{font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--red);font-weight:700;margin-bottom:.6rem}
+  .page-head h2{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:clamp(1.9rem,5vw,3.2rem);line-height:1;letter-spacing:.01em}
+  .page-head h2 small{display:block;font-family:'Noto Serif KR',serif;font-size:.95rem;color:var(--muted);letter-spacing:.06em;margin-top:.5rem;font-weight:400}
+  .prose p{font-size:1.05rem;color:#3a382f;margin-bottom:1.1rem;max-width:760px}
+  .prose strong{color:var(--ink)}
+  .back-btn{background:none;border:none;color:var(--red);font-family:inherit;font-weight:700;font-size:.85rem;
+    text-transform:uppercase;letter-spacing:.05em;cursor:pointer;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:.4rem}
+  .back-btn:hover{color:var(--red-deep)}
+
   .lead{font-size:1.05rem;color:#3a382f;margin-bottom:1.5rem;max-width:780px}
 
-  /* CARDS */
+  /* cards reused */
   .grid{display:grid;gap:1rem}
   .grid.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .grid.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
@@ -129,7 +196,6 @@
   .card li{margin-bottom:.35rem;font-size:.95rem}
   .tag{display:inline-block;background:var(--ink);color:var(--paper);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:.25rem .6rem;border-radius:99px;margin-bottom:.8rem}
 
-  /* TABLE */
   .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 10px var(--shadow)}
   table{width:100%;border-collapse:collapse;background:#fff;min-width:480px}
   th,td{padding:.8rem 1rem;text-align:left;border-bottom:1px solid var(--paper-2);font-size:.92rem}
@@ -137,57 +203,73 @@
   tbody tr:hover{background:var(--paper)}
   td .kr{font-family:'Noto Serif KR',serif;color:var(--red-deep);font-weight:600}
 
-  /* STEP LIST (patrones) */
   .steps{counter-reset:step;display:grid;gap:.5rem}
-  .step{
-    display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--line);
-    border-radius:10px;padding:.8rem 1rem;box-shadow:0 1px 5px var(--shadow);
-  }
-  .step .n{
-    flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;
-    font-weight:800;font-size:.85rem;display:grid;place-items:center;
-  }
+  .step{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--line);
+    border-radius:10px;padding:.8rem 1rem;box-shadow:0 1px 5px var(--shadow)}
+  .step .n{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--red);color:#fff;
+    font-weight:800;font-size:.85rem;display:grid;place-items:center}
   .phase-title{font-family:'Anton';font-size:1.1rem;text-transform:uppercase;letter-spacing:.03em;color:var(--red-deep);margin:1.6rem 0 .7rem;display:flex;align-items:center;gap:.6rem}
   .phase-title::before{content:"";width:18px;height:18px;background:var(--gold);transform:rotate(45deg)}
 
-  /* CALLOUT */
-  .callout{
-    background:linear-gradient(135deg,#171519,#2a121a);color:var(--paper);
-    border-radius:16px;padding:1.6rem 1.8rem;border-left:6px solid var(--gold);
-    margin-top:1.5rem;
-  }
+  .callout{background:linear-gradient(135deg,#171519,#2a121a);color:var(--paper);
+    border-radius:16px;padding:1.6rem 1.8rem;border-left:6px solid var(--gold);margin-top:1.5rem}
   .callout h4{font-family:'Anton';font-size:1.1rem;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.6rem;color:var(--gold)}
   .callout ul{padding-left:1.3rem}
   .callout li{margin-bottom:.4rem;font-size:.95rem;color:#ddd6c8}
 
-  /* PLAN semanal */
-  .week{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem}
-  .day{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem;box-shadow:0 2px 8px var(--shadow)}
-  .day .d{font-family:'Anton';color:var(--red);text-transform:uppercase;font-size:.9rem;letter-spacing:.06em;margin-bottom:.5rem;border-bottom:1px solid var(--paper-2);padding-bottom:.4rem}
-  .day ul{list-style:none;font-size:.85rem}
-  .day li{padding:.2rem 0;color:#46443b}
-  .day li::before{content:"▸ ";color:var(--gold)}
+  /* timeline (historia colombia) */
+  .timeline{position:relative;margin:1.5rem 0 0;padding-left:2rem}
+  .timeline::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:3px;background:linear-gradient(var(--red),var(--gold))}
+  .tl-item{position:relative;margin-bottom:1.4rem;background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;box-shadow:0 2px 8px var(--shadow)}
+  .tl-item::before{content:"";position:absolute;left:-1.65rem;top:1.2rem;width:14px;height:14px;border-radius:50%;background:var(--red);border:3px solid var(--paper)}
+  .tl-item .yr{font-family:'Anton';color:var(--red);font-size:1.2rem;letter-spacing:.03em}
+  .tl-item p{font-size:.95rem;color:#46443b;margin-top:.2rem}
 
-  /* checklist */
-  .check{list-style:none;display:grid;gap:.55rem}
-  .check li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.7rem 1rem;display:flex;align-items:center;gap:.8rem;font-weight:600;box-shadow:0 1px 5px var(--shadow);font-size:.95rem}
-  .check li .box{width:20px;height:20px;border:2px solid var(--red);border-radius:5px;flex-shrink:0}
+  /* maestro */
+  .master-hero{display:grid;grid-template-columns:300px 1fr;gap:2rem;align-items:start;margin-bottom:2rem}
+  @media(max-width:720px){.master-hero{grid-template-columns:1fr}}
+  .master-photo{border-radius:16px;overflow:hidden;border:3px solid var(--gold);box-shadow:0 10px 30px var(--shadow)}
+  .badge-list{display:grid;gap:.7rem;margin-top:1.2rem}
+  .badge{display:flex;gap:.8rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;box-shadow:0 1px 5px var(--shadow)}
+  .badge .bi{font-size:1.3rem;flex-shrink:0}
+  .badge strong{display:block;font-size:.98rem}
+  .badge span{font-size:.88rem;color:var(--muted)}
+  .img-frame{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 4px 16px var(--shadow);margin:1.5rem 0}
+  figure figcaption{font-size:.82rem;color:var(--muted);text-align:center;padding:.7rem;background:#fff}
 
-  /* VIDEO */
+  /* precio */
+  .price-card{max-width:460px;margin:1.5rem auto 0;background:linear-gradient(160deg,#0a0a0c,#241015);
+    color:var(--paper);border-radius:22px;padding:2.4rem 2rem;text-align:center;border:2px solid var(--gold);
+    box-shadow:0 18px 44px var(--shadow);position:relative;overflow:hidden}
+  .price-card::after{content:"태권도";position:absolute;right:-10%;bottom:-18%;font-family:'Noto Serif KR',serif;
+    font-size:9rem;color:rgba(244,241,234,.05);line-height:.7}
+  .price-card .plan{font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .price-card .amt{font-family:'Anton';font-size:4rem;line-height:1;margin:.6rem 0 .1rem;position:relative;z-index:2}
+  .price-card .amt small{font-size:1.1rem;color:#cfc8ba;display:block;font-family:'Manrope';font-weight:600;letter-spacing:.04em;margin-top:.3rem}
+  .price-card ul{list-style:none;text-align:left;max-width:280px;margin:1.6rem auto 0;position:relative;z-index:2}
+  .price-card li{padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:.95rem;display:flex;gap:.6rem;align-items:center}
+  .price-card li::before{content:"✓";color:var(--gold);font-weight:800}
+
+  /* contacto */
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;margin-top:1rem}
+  .contact-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:1.6rem;text-align:center;
+    box-shadow:0 2px 10px var(--shadow);text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;display:block}
+  .contact-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px var(--shadow);border-color:var(--red)}
+  .contact-card .ci{font-size:2.2rem;margin-bottom:.6rem}
+  .contact-card .ct{font-family:'Anton';text-transform:uppercase;font-size:1.05rem;letter-spacing:.03em;color:var(--red)}
+  .contact-card .cv{font-size:1rem;font-weight:700;margin-top:.3rem;word-break:break-word}
+  .contact-card .cs{font-size:.82rem;color:var(--muted);margin-top:.2rem}
+
+  /* video block (guia) */
   .video-block{margin-top:1.8rem;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px var(--shadow)}
   .video-head{background:var(--ink);color:var(--paper);padding:1rem 1.4rem;display:flex;align-items:center;gap:.7rem}
   .video-head .dot{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(200,16,46,.25)}
   .video-head strong{font-family:'Anton';letter-spacing:.04em;text-transform:uppercase;font-weight:400;font-size:1.05rem}
   .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#000}
-  .video-frame iframe,.video-frame video{position:absolute;inset:0;width:100%;height:100%;border:0;display:block;object-fit:contain;background:#000}
-  .video-note code{background:var(--paper-2);border:1px solid var(--line);border-radius:5px;padding:.1rem .4rem;font-family:'Manrope',monospace;font-size:.82rem;color:var(--red-deep);font-weight:700}
+  .video-frame iframe,.video-frame video,.video-frame>div{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
   .chapters{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.5rem;padding:1.1rem}
-  .chip{
-    display:flex;flex-direction:column;gap:.15rem;background:var(--paper);border:1px solid var(--line);
-    border-radius:10px;padding:.65rem .8rem;cursor:pointer;transition:.18s;text-align:left;font-family:inherit;
-    text-decoration:none;
-  }
-  .video-note{padding:0 1.1rem 1.1rem;font-size:.85rem;color:var(--muted)}
+  .chip{display:flex;flex-direction:column;gap:.15rem;background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;padding:.65rem .8rem;cursor:pointer;transition:.18s;text-align:left;font-family:inherit;text-decoration:none}
   .chip:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px)}
   .chip:hover .t,.chip:hover .k{color:#fff}
   .chip .t{font-family:'Anton';font-size:1.05rem;color:var(--red);letter-spacing:.03em}
@@ -196,430 +278,728 @@
   .chip.active .t{color:var(--gold)}
   .chip.active .k{color:#cfc8ba}
 
-  footer{background:var(--ink);color:#9a948a;text-align:center;padding:2.5rem 1.5rem;font-size:.85rem;position:relative;z-index:2}
+  /* guide internal nav */
+  .guide-toc{display:flex;flex-wrap:wrap;gap:.4rem;margin:1.5rem 0 2rem;padding:1rem;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 2px 10px var(--shadow)}
+  .guide-toc a{text-decoration:none;font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+    padding:.4rem .8rem;border:1px solid var(--line);border-radius:99px;transition:.2s}
+  .guide-toc a:hover{color:#fff;border-color:var(--red);background:var(--red)}
+  .gsection{margin-bottom:clamp(2.5rem,6vw,4.5rem);scroll-margin-top:90px}
+  .sec-head{display:flex;align-items:baseline;gap:1.2rem;margin-bottom:1.6rem;border-bottom:3px solid var(--ink);padding-bottom:.8rem}
+  .sec-num{font-family:'Anton';font-size:clamp(1.8rem,5vw,3rem);color:var(--red);line-height:1;flex-shrink:0}
+  .sec-head h2{font-family:'Anton';font-weight:400;text-transform:uppercase;font-size:clamp(1.4rem,4vw,2.4rem);line-height:1;letter-spacing:.01em}
+  .sec-head h2 small{display:block;font-family:'Noto Serif KR',serif;font-size:.82rem;color:var(--muted);letter-spacing:.06em;margin-top:.35rem;font-weight:400;text-transform:none}
+  @media(max-width:560px){.sec-head{flex-direction:column;gap:.3rem}}
+
+  .week{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.7rem}
+  .day{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1rem;box-shadow:0 2px 8px var(--shadow)}
+  .day .d{font-family:'Anton';color:var(--red);text-transform:uppercase;font-size:.9rem;letter-spacing:.06em;margin-bottom:.5rem;border-bottom:1px solid var(--paper-2);padding-bottom:.4rem}
+  .day ul{list-style:none;font-size:.85rem}
+  .day li{padding:.2rem 0;color:#46443b}
+  .day li::before{content:"▸ ";color:var(--gold)}
+  .check{list-style:none;display:grid;gap:.55rem}
+  .check li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.7rem 1rem;display:flex;align-items:center;gap:.8rem;font-weight:600;box-shadow:0 1px 5px var(--shadow);font-size:.95rem;cursor:pointer}
+  .check li .box{width:20px;height:20px;border:2px solid var(--red);border-radius:5px;flex-shrink:0}
+
+  footer{background:var(--ink);color:#9a948a;text-align:center;padding:2.6rem 1.5rem;font-size:.85rem;position:relative;z-index:2;border-top:4px solid var(--red)}
+  footer .flogo{width:60px;height:60px;border-radius:50%;margin:0 auto 1rem;background:#000}
   footer strong{color:var(--gold);font-family:'Anton';letter-spacing:.05em;font-weight:400}
-
-  /* reveal animation */
-  .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease, transform .6s ease}
+  footer a{color:var(--gold);text-decoration:none}
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .5s ease, transform .5s ease}
   .reveal.show{opacity:1;transform:none}
-
-  @media(max-width:560px){
-    .sec-head{flex-direction:column;gap:.3rem}
-    nav.toc ul{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto}
-  }
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-inner">
-    <span class="kicker">Guía de Examen · Promoción</span>
-    <h1>Cinta <span class="accent">Negra</span>
-      <em>흑띠 · El camino del 1er Dan</em>
-    </h1>
-    <p class="hero-sub">Programa de preparación estructurado para dominar cada uno de los siete componentes que evaluará el tribunal: básicos, patrones, taegeuks, teoría, combate y defensa personal.</p>
-    <div class="belt-bar"><span></span><span></span><span></span></div>
+<!-- ===== TOP BAR ===== -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" data-nav="home">
+      <img src="assets/logo.png" alt="Logo Club Taekwondo Dragón Rojo">
+      <div>
+        <div class="bt">Club Taekwondo <span>Dragón Rojo</span></div>
+        <div class="bk">태권도 · Envigado, Antioquia</div>
+      </div>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menú">☰</button>
+    <nav class="mainnav" id="mainnav">
+      <ul>
+        <li><button data-nav="club">Acerca del club</button></li>
+        <li><button data-nav="historia">Historia en Colombia</button></li>
+        <li><button data-nav="maestro">Acerca del Maestro</button></li>
+        <li><button data-nav="guia">Guía Examen Cinta Negra</button></li>
+        <li><button data-nav="precio">Precio al mes</button></li>
+        <li><button data-nav="contacto">Contacto y Redes</button></li>
+      </ul>
+    </nav>
   </div>
-</header>
+</div>
 
-<nav class="toc">
-  <ul>
-    <li><a href="#taeguls">Taegeuks 1–8</a></li>
-    <li><a href="#basicos">Básicos 1–7</a></li>
-    <li><a href="#punos">Patrón Puños</a></li>
-    <li><a href="#general">Patrón General</a></li>
-    <li><a href="#teoria">Teoría</a></li>
-    <li><a href="#combate">Combate</a></li>
-    <li><a href="#defensa">Defensa Personal</a></li>
-    <li><a href="#plan">Plan Semanal</a></li>
-  </ul>
-</nav>
-
-<main>
-
-  <!-- INTRO -->
-  <section class="reveal" id="intro">
-    <p class="lead">Esta guía organiza tu entrenamiento en bloques de práctica deliberada. La clave para el examen no es solo <strong>saber</strong> las secuencias, sino ejecutarlas con potencia, equilibrio (kyong-gyong), kihap a tiempo y transiciones limpias entre posiciones. Trabaja despacio para la precisión, luego sube la velocidad sin perder la forma.</p>
-    <div class="callout">
-      <h4>Principios que el tribunal observa</h4>
-      <ul>
-        <li><strong>Precisión técnica:</strong> altura correcta de bloqueos y golpes, trayectoria de la cadera, retracción de la mano contraria (hikisute).</li>
-        <li><strong>Potencia y enfoque:</strong> tensión final en el impacto, respiración y kihap coordinados.</li>
-        <li><strong>Equilibrio y posiciones:</strong> bases firmes, transiciones sin tambaleo.</li>
-        <li><strong>Espíritu (indomitable):</strong> actitud, mirada al frente, marcialidad constante de inicio a fin.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 1. TAEGEUKS -->
-  <section class="reveal" id="taeguls">
-    <div class="sec-head"><span class="sec-num">01</span><h2>Taegeuks 1 al 8<small>태극 · Los 8 poomsae del Kukkiwon</small></h2></div>
-    <p class="lead">Cada taegeuk representa un trigrama del I Ching (Palgwe) y sube en complejidad. Repásalos en orden y dedica una sesión a los que peor te salgan. El número de movimientos abajo es el estándar Kukkiwon — verifícalo con tu maestro.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Taegeuk</th><th>Trigrama</th><th>Significado</th><th>Foco técnico</th></tr></thead>
-        <tbody>
-          <tr><td><span class="kr">1 · Il Jang</span></td><td>건 Geon</td><td>Cielo / inicio</td><td>Bloqueo bajo, medio y patada frontal. Bases.</td></tr>
-          <tr><td><span class="kr">2 · I Jang</span></td><td>태 Tae</td><td>Lago / serenidad</td><td>Bloqueo alto y más golpes de puño.</td></tr>
-          <tr><td><span class="kr">3 · Sam Jang</span></td><td>리 Ri</td><td>Fuego / pasión</td><td>Mano de cuchillo, doble patada, ritmo.</td></tr>
-          <tr><td><span class="kr">4 · Sa Jang</span></td><td>진 Jin</td><td>Trueno / poder</td><td>Sonnal makgi, pyojeok chagi, golpe de lanza.</td></tr>
-          <tr><td><span class="kr">5 · O Jang</span></td><td>손 Seon</td><td>Viento</td><td>Codazos, golpe de martillo, posición baja.</td></tr>
-          <tr><td><span class="kr">6 · Yuk Jang</span></td><td>감 Gam</td><td>Agua</td><td>Patada circular (dollyo), fluidez.</td></tr>
-          <tr><td><span class="kr">7 · Chil Jang</span></td><td>간 Gan</td><td>Montaña / firmeza</td><td>Posición de gato (beom seogi), patada lateral.</td></tr>
-          <tr><td><span class="kr">8 · Pal Jang</span></td><td>곤 Gon</td><td>Tierra</td><td>Patada de salto, combinaciones completas.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="callout">
-      <h4>Estrategia de repaso</h4>
-      <ul>
-        <li>Día A: Taegeuk 1–4 fluidas + 2 detalladas. Día B: Taegeuk 5–8.</li>
-        <li>Ejecuta cada una tres veces: 1ª lenta (precisión), 2ª a ritmo de examen, 3ª con ojos en un espejo.</li>
-        <li>Memoriza significado y trigrama: el tribunal puede preguntarlo en la parte teórica.</li>
-      </ul>
-    </div>
-
-    <div class="video-block">
-      <div class="video-head"><span class="dot"></span><strong>Video guía · Taegeuk 1 al 8 (태극품새)</strong></div>
-      <div class="video-frame">
-        <div id="ytPlayer"></div>
+<!-- ===================== HOME ===================== -->
+<div class="view active" id="view-home">
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="kicker">Envigado · Antioquia · Desde 1998</span>
+        <h1>Club Taekwondo<br><span class="accent">Dragón Rojo</span>
+          <em>흑띠의 길 · El camino del guerrero</em>
+        </h1>
+        <p class="hero-sub">Formamos personas disciplinadas y líderes para la vida a través del taekwondo. Clases para niños desde los 4 años, jóvenes y adultos. Arte marcial coreano, defensa personal y deporte olímpico de competición.</p>
+        <div class="hero-cta">
+          <button class="btn btn-red" data-nav="club">Conoce el club</button>
+          <button class="btn btn-ghost" data-nav="contacto">Inscríbete hoy</button>
+        </div>
+        <div class="belt-bar"><span></span><span></span><span></span></div>
       </div>
-      <div class="chapters">
-        <button class="chip" type="button" data-t="0"><span class="t">Taegeuk 1</span><span class="k">태극1장 · 0:00</span></button>
-        <button class="chip" type="button" data-t="46"><span class="t">Taegeuk 2</span><span class="k">태극2장 · 0:46</span></button>
-        <button class="chip" type="button" data-t="97"><span class="t">Taegeuk 3</span><span class="k">태극3장 · 1:37</span></button>
-        <button class="chip" type="button" data-t="150"><span class="t">Taegeuk 4</span><span class="k">태극4장 · 2:30</span></button>
-        <button class="chip" type="button" data-t="203"><span class="t">Taegeuk 5</span><span class="k">태극5장 · 3:23</span></button>
-        <button class="chip" type="button" data-t="257"><span class="t">Taegeuk 6</span><span class="k">태극6장 · 4:17</span></button>
-        <button class="chip" type="button" data-t="317"><span class="t">Taegeuk 7</span><span class="k">태극7장 · 5:17</span></button>
-        <button class="chip" type="button" data-t="379"><span class="t">Taegeuk 8</span><span class="k">태극8장 · 6:19</span></button>
+      <div class="hero-logo">
+        <img src="assets/logo.png" alt="Escudo Club Taekwondo Dragón Rojo">
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- 2. BASICOS -->
-  <section class="reveal" id="basicos">
-    <div class="sec-head"><span class="sec-num">02</span><h2>Básicos del 1 al 7<small>기본 · Kibon — fundamentos por niveles</small></h2></div>
-    <p class="lead">Los básicos se practican en filas, avanzando y retrocediendo en posición larga (ap-kubi). Domínalos por separado y luego en combinaciones. Cuenta en coreano en cada repetición.</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Nº</th><th>Técnica base</th><th>Coreano</th><th>Puntos clave</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Golpe de puño medio</td><td><span class="kr">몸통 지르기 · Momtong jireugi</span></td><td>Cadera, retracción del puño opuesto a la cintura.</td></tr>
-          <tr><td>2</td><td>Bloqueo bajo</td><td><span class="kr">아래 막기 · Arae makgi</span></td><td>Antebrazo termina sobre el muslo adelantado.</td></tr>
-          <tr><td>3</td><td>Bloqueo medio interno/externo</td><td><span class="kr">몸통 막기 · Momtong makgi</span></td><td>Codo doblado ~90°, puño a la altura del hombro.</td></tr>
-          <tr><td>4</td><td>Bloqueo alto</td><td><span class="kr">얼굴 막기 · Eolgul makgi</span></td><td>Antebrazo inclinado, un puño sobre la frente.</td></tr>
-          <tr><td>5</td><td>Golpe a mano de cuchillo</td><td><span class="kr">손날 치기 · Sonnal chigi</span></td><td>Borde de la mano, giro de cintura.</td></tr>
-          <tr><td>6</td><td>Patada frontal</td><td><span class="kr">앞 차기 · Ap chagi</span></td><td>Rodilla arriba, golpe con la planta (ap-chuk), retracción.</td></tr>
-          <tr><td>7</td><td>Combinación bloqueo + golpe</td><td><span class="kr">막기 + 지르기</span></td><td>Bloqueo al avanzar y contraataque inmediato.</td></tr>
-        </tbody>
-      </table>
+  <div class="stats">
+    <div class="stat"><div class="num">29</div><div class="lbl">Años de trayectoria</div></div>
+    <div class="stat"><div class="num">+850</div><div class="lbl">Deportistas formados</div></div>
+    <div class="stat"><div class="num">+17</div><div class="lbl">Cinturones negros</div></div>
+    <div class="stat"><div class="num">7°</div><div class="lbl">Dan del Maestro</div></div>
+  </div>
+
+  <div class="home-grid">
+    <button class="nav-card" data-nav="club"><div class="ic">🛡️</div><h3>Acerca del club</h3><p>Quiénes somos, nuestra historia y reconocimientos.<span class="kr">우리 도장</span></p></button>
+    <button class="nav-card" data-nav="historia"><div class="ic">🇨🇴</div><h3>Historia en Colombia</h3><p>El recorrido del taekwondo en el país y en Antioquia.<span class="kr">태권도 역사</span></p></button>
+    <button class="nav-card" data-nav="maestro"><div class="ic">🥋</div><h3>Acerca del Maestro</h3><p>Maestro Duber Bairon Gallego Echeverry, 7° Dan.<span class="kr">사범님</span></p></button>
+    <button class="nav-card" data-nav="guia"><div class="ic">⚫</div><h3>Guía examen cinta negra</h3><p>Programa completo de preparación para 1er Dan.<span class="kr">승급 심사</span></p></button>
+    <button class="nav-card" data-nav="precio"><div class="ic">💳</div><h3>Precio al mes</h3><p>Planes de mensualidad y horarios de clases.<span class="kr">수강료</span></p></button>
+    <button class="nav-card" data-nav="contacto"><div class="ic">📱</div><h3>Contacto y redes</h3><p>Teléfono, redes sociales y cómo inscribirte.<span class="kr">연락처</span></p></button>
+  </div>
+</div>
+
+<!-- ===================== ACERCA DEL CLUB ===================== -->
+<div class="view" id="view-club">
+  <main class="page">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Quiénes somos</div>
+      <h2>Acerca del Club<small>클럽 소개 · Club Taekwondo Dragón Rojo</small></h2>
     </div>
-    <div class="callout">
-      <h4>Cómo entrenarlos</h4>
-      <ul>
-        <li>3 series de 10 repeticiones por lado, lento y con tensión final.</li>
-        <li>Filmate de lado para revisar altura de cadera y bloqueos.</li>
-        <li>Cierra con 2 largos de la sala combinando los 7 en secuencia continua.</li>
-      </ul>
+
+    <div class="prose">
+      <p>El <strong>Club Taekwondo Dragón Rojo</strong> nació en <strong>1998</strong> en el municipio de <strong>Envigado, Antioquia</strong>, en el barrio Señorial, con un pequeño grupo de niños entre los 5 y 10 años. Con el tiempo ese grupo se consolidó como club y hoy cuenta con <strong>29 años</strong> de historia formando deportistas.</p>
+      <p>Estamos afiliados a la <strong>Liga Antioqueña de Taekwondo</strong> y contamos con reconocimiento deportivo del <strong>INDER</strong> del municipio de Envigado. A lo largo de nuestra trayectoria hemos formado a más de <strong>850 deportistas</strong> y graduado a más de <strong>17 alumnos a cinturón negro</strong>, representando a Antioquia y a Colombia a nivel departamental, nacional e internacional.</p>
     </div>
-  </section>
 
-  <!-- 3. PATRON PUÑOS -->
-  <section class="reveal" id="punos">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Patrón de Puños<small>주먹 본 · Secuencia de golpes de mano</small></h2></div>
-    <p class="lead">Patrón corto centrado en golpes de puño y bloqueos de brazo, sin patadas. Busca el ritmo: bloqueo defensivo → contraataque potente → recolocación. Marca kihap en los puntos de máximo enfoque.</p>
-    <div class="steps">
-      <div class="step"><span class="n">1</span><div><strong>Posición de atención y saludo</strong> — Charyeot / Kyeongnye. Inicio en junbi (posición lista).</div></div>
-      <div class="step"><span class="n">2</span><div><strong>Giro + bloqueo bajo</strong> hacia el primer ángulo en posición larga.</div></div>
-      <div class="step"><span class="n">3</span><div><strong>Golpe de puño medio</strong> al avanzar (momtong jireugi) con retracción firme.</div></div>
-      <div class="step"><span class="n">4</span><div><strong>Bloqueo medio</strong> al cambiar de dirección, codo a 90°.</div></div>
-      <div class="step"><span class="n">5</span><div><strong>Doble golpe</strong> de puño en el eje central — primer <em>kihap</em>.</div></div>
-      <div class="step"><span class="n">6</span><div><strong>Bloqueo alto + contragolpe</strong> en la línea de retorno.</div></div>
-      <div class="step"><span class="n">7</span><div><strong>Cierre</strong>: regreso al punto de inicio en junbi, saludo final.</div></div>
+    <div class="img-frame">
+      <img src="assets/historia_club.png" alt="Historia del Club Taekwondo Dragón Rojo">
     </div>
-    <div class="callout">
-      <h4>Detalle del examen</h4>
-      <ul>
-        <li>El tribunal valora que vuelvas exactamente al punto de partida.</li>
-        <li>Mira hacia donde vas a atacar <em>antes</em> de girar la cadera.</li>
-        <li>Confirma con tu instructor el conteo exacto de tu escuela; los nombres varían entre federaciones.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 4. PATRON GENERAL -->
-  <section class="reveal" id="general">
-    <div class="sec-head"><span class="sec-num">04</span><h2>Patrón General · hasta el paso 60<small>전체 본 · Forma extendida</small></h2></div>
-    <p class="lead">Es el bloque más largo de memorización. Divídelo en <strong>tramos de 10–12 movimientos</strong> y une un tramo nuevo solo cuando el anterior salga sin pensar. Practica el diagrama de pisadas en el suelo antes de añadir potencia.</p>
-
-    <div class="phase-title">Bloque A · pasos 1–15 — Apertura y orientación</div>
-    <p>Saludo, junbi y primer recorrido de bloqueos bajos y golpes. Fija aquí los <strong>ángulos de giro</strong> (90°, 180°, 270°). Si pierdes el ángulo al inicio, todo el patrón se desvía.</p>
-
-    <div class="phase-title">Bloque B · pasos 16–30 — Combinaciones medias</div>
-    <p>Aparecen bloqueos medios encadenados con golpes y la primera patada frontal. Trabaja la transición patada→aterrizaje→golpe sin pausa.</p>
-
-    <div class="phase-title">Bloque C · pasos 31–45 — Cambios de nivel y dirección</div>
-    <p>Secuencias con bloqueo alto, mano de cuchillo y giros amplios. Marca el <strong>primer kihap</strong> en el clímax de este bloque.</p>
-
-    <div class="phase-title">Bloque D · pasos 46–60 — Clímax y cierre</div>
-    <p>Combinaciones rápidas, segundo <strong>kihap</strong> y retorno al punto de origen. El paso 60 debe terminar donde empezaste, mirando al frente original.</p>
 
     <div class="grid g3" style="margin-top:1.5rem">
-      <div class="card"><span class="tag">Método</span><h3>Mapa de pisadas</h3><p style="padding-left:.4rem;font-size:.92rem">Dibuja la "I", "+", o el diagrama de tu patrón en el piso con cinta. Camina solo los pies, sin manos, hasta memorizar la ruta.</p></div>
-      <div class="card"><span class="tag">Método</span><h3>Encadenado</h3><p style="padding-left:.4rem;font-size:.92rem">A+B, luego B+C, luego C+D, y por último completo. Nunca empieces siempre desde el paso 1 (memorizarás mal el final).</p></div>
-      <div class="card"><span class="tag">Método</span><h3>Conteo en voz</h3><p style="padding-left:.4rem;font-size:.92rem">Di el número coreano de cada movimiento. Te ancla el ritmo y delata dónde dudas.</p></div>
-    </div>
-    <div class="callout">
-      <h4>Importante</h4>
-      <ul>
-        <li>La secuencia exacta de los 60 pasos depende de tu federación/escuela. Pídele a tu instructor el listado oficial y úsalo como guion; esta guía te da el método para memorizarlo, no la coreografía exacta.</li>
-        <li>Graba un video completo cada semana y compáralo: detectarás los pasos donde aún titubeas.</li>
-      </ul>
-    </div>
-  </section>
-
-  </section>
-
-  <!-- 5. TEORIA (sin cambios de número) -->
-  <section class="reveal" id="teoria">
-    <div class="sec-head"><span class="sec-num">05</span><h2>Teoría Básica<small>이론 · Vocabulario coreano esencial</small></h2></div>
-    <p class="lead">Tabla de referencia rápida. Apréndela en voz alta. En el examen suelen pedir que <strong>nombres la técnica y la ejecutes</strong> a la vez.</p>
-
-    <div class="grid g2">
-      <div class="card">
-        <span class="tag">Patadas · Chagi</span>
-        <h3>차기</h3>
-        <ul>
-          <li><strong>Ap chagi</strong> — patada frontal (앞 차기)</li>
-          <li><strong>Dollyo chagi</strong> — patada circular (돌려 차기)</li>
-          <li><strong>Yop chagi</strong> — patada lateral (옆 차기)</li>
-          <li><strong>Dwit chagi</strong> — patada atrás (뒤 차기)</li>
-          <li><strong>Naeryo chagi</strong> — patada de hacha / descendente (내려 차기)</li>
-          <li><strong>Bandal chagi</strong> — media luna</li>
-          <li><strong>Mondollyo / huryo chagi</strong> — gancho (후려 차기)</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Golpes de mano</span>
-        <h3>지르기 · 치기</h3>
-        <ul>
-          <li><strong>Jireugi</strong> — golpe recto de puño</li>
-          <li><strong>Momtong jireugi</strong> — al tronco</li>
-          <li><strong>Eolgul jireugi</strong> — al rostro</li>
-          <li><strong>Sonnal chigi</strong> — mano de cuchillo</li>
-          <li><strong>Palkup chigi</strong> — codazo (팔꿈치)</li>
-          <li><strong>Dung jumeok</strong> — revés de puño</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Bloqueos · Makgi</span>
-        <h3>막기</h3>
-        <ul>
-          <li><strong>Arae makgi</strong> — bloqueo bajo</li>
-          <li><strong>Momtong makgi</strong> — bloqueo medio</li>
-          <li><strong>Eolgul makgi</strong> — bloqueo alto</li>
-          <li><strong>Sonnal makgi</strong> — bloqueo mano de cuchillo</li>
-          <li><strong>Hecho makgi</strong> — bloqueo en cuña/separación</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Posiciones · Seogi</span>
-        <h3>서기</h3>
-        <ul>
-          <li><strong>Ap seogi</strong> — posición corta de andar</li>
-          <li><strong>Ap kubi</strong> — posición larga adelantada</li>
-          <li><strong>Dwit kubi</strong> — posición atrasada (peso atrás)</li>
-          <li><strong>Juchum seogi</strong> — posición de jinete</li>
-          <li><strong>Beom seogi</strong> — posición de gato/tigre</li>
-          <li><strong>Moa seogi / junbi</strong> — pies juntos / listo</li>
-        </ul>
-      </div>
+      <div class="card"><span class="tag">Competencias</span><h3>36 campeonatos</h3><p style="padding-left:.4rem;font-size:.92rem">A nivel departamental y nacional a lo largo de nuestra historia.</p></div>
+      <div class="card"><span class="tag">Internacional</span><h3>28 campeonatos</h3><p style="padding-left:.4rem;font-size:.92rem">Participaciones a nivel internacional representando al club.</p></div>
+      <div class="card"><span class="tag">Formación</span><h3>31 capacitaciones</h3><p style="padding-left:.4rem;font-size:.92rem">A nivel departamental, nacional e internacional.</p></div>
     </div>
 
     <div class="grid g2" style="margin-top:1rem">
       <div class="card">
-        <span class="tag">Conteo coreano</span>
-        <h3>숫자 1–10</h3>
-        <ul style="columns:2">
-          <li>Hana (1)</li><li>Dul (2)</li><li>Set (3)</li><li>Net (4)</li><li>Daseot (5)</li>
-          <li>Yeoseot (6)</li><li>Ilgop (7)</li><li>Yeodeol (8)</li><li>Ahop (9)</li><li>Yeol (10)</li>
+        <span class="tag">Nuestras clases</span>
+        <h3>Para todas las edades</h3>
+        <ul>
+          <li>Taekwondo para niños desde los <strong>4 años</strong>, jóvenes y adultos</li>
+          <li>Defensa personal y arte marcial coreano</li>
+          <li>Deporte olímpico a nivel competitivo</li>
+          <li>También: aeróbicos, yoga, pilates, hidroaeróbicos, rumba aeróbica y gimnasia para el adulto mayor</li>
         </ul>
       </div>
       <div class="card">
-        <span class="tag">Comandos y conceptos</span>
-        <h3>용어</h3>
+        <span class="tag">Nuestro propósito</span>
+        <h3>Disciplina y liderazgo</h3>
         <ul>
-          <li><strong>Charyeot</strong> — atención · <strong>Kyeongnye</strong> — saludo</li>
-          <li><strong>Junbi</strong> — preparados · <strong>Sijak</strong> — comenzar</li>
-          <li><strong>Kihap</strong> — grito de energía · <strong>Geuman</strong> — alto</li>
-          <li><strong>Dojang</strong> — sala · <strong>Dobok</strong> — uniforme · <strong>Ti</strong> — cinturón</li>
-          <li><strong>Poomsae</strong> — forma · <strong>Kyorugi</strong> — combate · <strong>Hoshinsul</strong> — defensa personal</li>
-        </ul>
-      </div>
-    </div>
-    <div class="callout">
-      <h4>Significado de Taekwondo</h4>
-      <ul>
-        <li><strong>跆 Tae</strong> = pie/saltar/golpear con el pie · <strong>拳 Kwon</strong> = puño/golpear con la mano · <strong>道 Do</strong> = camino/disciplina. Literalmente: "el camino del pie y el puño".</li>
-        <li>Repasa también los 5 principios (cortesía, integridad, perseverancia, autocontrol, espíritu indomable): suelen preguntarse.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- 6. COMBATE -->
-  <section class="reveal" id="combate">
-    <div class="sec-head"><span class="sec-num">06</span><h2>Combate<small>겨루기 · Kyorugi</small></h2></div>
-    <p class="lead">Te evalúan control, distancia, variedad de técnicas y actitud, no solo ganar. Mantén la guardia, muévete con los pies, y combina patadas con desplazamiento.</p>
-
-    <div class="phase-title" style="margin-top:0">Reglas oficiales · World Taekwondo (WT)</div>
-
-    <div class="grid g2" style="margin-bottom:1rem">
-      <div class="card">
-        <span class="tag">Estructura del combate</span>
-        <h3>Formato de pelea</h3>
-        <ul>
-          <li><strong>3 asaltos</strong> de <strong>2 minutos</strong> cada uno</li>
-          <li><strong>1 minuto</strong> de descanso entre asaltos</li>
-          <li>Área de combate: <strong>8 × 8 m</strong> (octagonal o cuadrada)</li>
-          <li>Árbitro central + 3–4 árbitros de esquina (sistema electrónico)</li>
-          <li>Equipamiento obligatorio: casco, hogu (protector de tronco), protector de ingle, antebrazo, espinilla y bucal</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Sistema de puntuación</span>
-        <h3>Puntos válidos</h3>
-        <ul>
-          <li>🥊 <strong>Puño al tronco</strong> (hogu) — <strong>1 punto</strong></li>
-          <li>🦵 <strong>Patada al tronco</strong> (hogu) — <strong>2 puntos</strong></li>
-          <li>🔄 <strong>Patada giratoria al tronco</strong> — <strong>4 puntos</strong></li>
-          <li>🦵 <strong>Patada a la cabeza</strong> — <strong>3 puntos</strong></li>
-          <li>🔄 <strong>Patada giratoria a la cabeza</strong> — <strong>5 puntos</strong></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid g2" style="margin-bottom:1rem">
-      <div class="card">
-        <span class="tag">Infracciones · Gam-jeom</span>
-        <h3>Penalizaciones (1 pto al rival)</h3>
-        <ul>
-          <li>Caída al suelo sin recibir golpe válido</li>
-          <li>Salir del área de combate</li>
-          <li>Agarrar, empujar o abrazar al rival</li>
-          <li>Atacar por debajo de la cintura</li>
-          <li>Atacar a un oponente caído</li>
-          <li>Golpear la espalda o la nuca</li>
-          <li>Atacar la cara del rival con la mano o el puño</li>
-          <li>Simular lesión o conducta antideportiva</li>
-          <li>No acatar la orden <em>Kalyeo</em> (parar) del árbitro</li>
-        </ul>
-      </div>
-      <div class="card">
-        <span class="tag">Formas de victoria</span>
-        <h3>Cómo se gana</h3>
-        <ul>
-          <li><strong>KO</strong> — noqueo: el rival no se levanta en 10 seg</li>
-          <li><strong>RSC</strong> — árbitro detiene el combate por superioridad o seguridad</li>
-          <li><strong>PTG</strong> — diferencia de ≥ 20 puntos en cualquier momento</li>
-          <li><strong>Puntos</strong> — mayor puntaje al final de los 3 asaltos</li>
-          <li><strong>Punto de oro</strong> — empate: asalto extra al primer punto válido</li>
-          <li><strong>Descalificación</strong> — acumulación excesiva de gam-jeom</li>
+          <li>Formar personas disciplinadas y líderes para la vida cotidiana</li>
+          <li>Cada semestre presentamos exámenes y ascensos</li>
+          <li>Premiamos a los 3 mejores deportistas con trofeos, certificados y medallas</li>
+          <li>Apoyo de la junta directiva, la Liga Antioqueña y el INDER</li>
         </ul>
       </div>
     </div>
 
     <div class="callout">
-      <h4>Zonas de puntuación válidas</h4>
+      <h4>El deporte y la mente sana</h4>
       <ul>
-        <li><strong>Tronco (hogu):</strong> zona frontal cubierta por el protector de pecho. El golpe o patada debe impactar con fuerza suficiente para ser registrado.</li>
-        <li><strong>Cabeza:</strong> por encima del cuello, exclusivamente con patadas. Las técnicas giratorias a la cabeza suman 5 puntos.</li>
-        <li><strong>Zonas prohibidas:</strong> ingle, espalda, parte posterior de la cabeza/cuello y cualquier zona por debajo de la cintura.</li>
+        <li>"El deporte te ayuda a mantener un cuerpo sano y una mente sana; así llegarás a encontrar lo que quieres."</li>
+        <li><strong>Dragón Rojo siempre grande, exitoso y poderoso.</strong></li>
       </ul>
     </div>
+  </main>
+</div>
 
-    <div class="phase-title">Técnica y táctica para el examen</div>
-    <div class="grid g3">
-      <div class="card"><span class="tag">Fundamento</span><h3>Guardia y juego de pies</h3><p style="padding-left:.4rem;font-size:.92rem">Postura de combate ligera, peso en metatarsos. Practica paso adelante/atrás y deslizamiento lateral sin cruzar los pies.</p></div>
-      <div class="card"><span class="tag">Ataque</span><h3>Combinaciones</h3><p style="padding-left:.4rem;font-size:.92rem">Dollyo doble, dollyo + giro (dwit/huryo), patada de avance (bandal). Encadena 2–3 técnicas, no patadas sueltas.</p></div>
-      <div class="card"><span class="tag">Defensa</span><h3>Contraataque</h3><p style="padding-left:.4rem;font-size:.92rem">Esquiva con paso atrás y responde con dollyo de pierna trasera. Trabaja el "cut kick" para frenar la entrada del rival.</p></div>
+<!-- ===================== HISTORIA EN COLOMBIA ===================== -->
+<div class="view" id="view-historia">
+  <main class="page">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Raíces y legado</div>
+      <h2>Historia del Taekwondo en Colombia<small>콜롬비아 태권도 역사</small></h2>
     </div>
+
+    <div class="prose">
+      <p>El taekwondo es un arte marcial coreano cuyos orígenes se vinculan a prácticas ancestrales como el <strong>Taekkyon</strong> y el <strong>Subak</strong>. <span></span>El nombre "Taekwondo" se propuso oficialmente en <strong>1955</strong> para designar el arte marcial unificado, y combina <strong>跆 Tae</strong> (golpear con el pie), <strong>拳 Kwon</strong> (golpear con la mano) y <strong>道 Do</strong> (el camino).</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="yr">1964</div><p>El taekwondo llega a Colombia. Las primeras ciudades en practicarlo fueron <strong>Bogotá y Medellín</strong>, de la mano del profesor coreano Sahn Young Han.</p></div>
+      <div class="tl-item reveal"><div class="yr">1966</div><p>En <strong>Antioquia y Medellín</strong> se empieza a practicar con el maestro coreano Huan Soo Sohn, quien también trajo consigo el judo a la región.</p></div>
+      <div class="tl-item reveal"><div class="yr">1967</div><p>Se institucionaliza y oficializa el taekwondo en Colombia mediante un convenio entre la Universidad de América en Bogotá y el gobierno de Corea.</p></div>
+      <div class="tl-item reveal"><div class="yr">1969</div><p>Llega el maestro coreano Woo Young Lee (Carlos Lee), aportando nuevos conocimientos al taekwondo nacional.</p></div>
+      <div class="tl-item reveal"><div class="yr">1978</div><p>Se funda la <strong>Federación Colombiana de Taekwondo</strong> el 9 de diciembre, mediante asamblea de las ligas de Atlántico, Bolívar y Sucre en Barranquilla.</p></div>
+      <div class="tl-item reveal"><div class="yr">1979</div><p>La Federación recibe el reconocimiento oficial por parte de Coldeportes Nacional.</p></div>
+      <div class="tl-item reveal"><div class="yr">2000</div><p>El taekwondo se consolida como deporte olímpico oficial; Colombia comienza a participar en los Juegos Olímpicos.</p></div>
+      <div class="tl-item reveal"><div class="yr">2012</div><p><strong>Óscar Muñoz</strong> consigue el mayor logro del taekwondo colombiano hasta entonces: medalla de bronce en los Juegos Olímpicos de Londres.</p></div>
+    </div>
+
     <div class="callout">
-      <h4>Acondicionamiento para el combate</h4>
+      <h4>La Liga Antioqueña de Taekwondo</h4>
       <ul>
-        <li>Rounds de sombra de 2 min × 3, con 1 min de descanso, imitando el ritmo del examen.</li>
-        <li>Trabajo en paos/escudo: 10 series de combinaciones para potencia y aire.</li>
-        <li>Cardio a intervalos (sprints, comba) 2 veces por semana para no cansarte en el examen.</li>
-        <li>Control: en examen, contacto medido. Demuestra técnica, no agresión descontrolada.</li>
+        <li>Es la organización que rige el taekwondo en el departamento de Antioquia y es miembro de la Federación Colombiana de Taekwondo (FCT).</li>
+        <li>Antioquia es reconocida como una de las ligas más competitivas del país.</li>
+        <li>El <strong>Club Dragón Rojo está afiliado a esta liga</strong>, integrándose al árbol genealógico del taekwondo antioqueño.</li>
       </ul>
     </div>
-  </section>
 
-  <!-- 7. DEFENSA PERSONAL -->
-  <section class="reveal" id="defensa">
-    <div class="sec-head"><span class="sec-num">07</span><h2>Defensa Personal<small>호신술 · Hoshinsul</small></h2></div>
-    <p class="lead">Prepara una secuencia limpia y memorizada ante un agarre o ataque. Estructura siempre: <strong>liberación → control → técnica de finalización → distancia segura</strong>.</p>
-    <div class="grid g2">
-      <div class="card"><span class="tag">Escenario 1</span><h3>Agarre de muñeca</h3><ul><li>Gira la muñeca hacia el pulgar del agresor (punto débil) para liberar.</li><li>Atrapa su mano y aplica palanca (control de muñeca).</li><li>Patada o golpe de control y desplázate fuera de su alcance.</li></ul></div>
-      <div class="card"><span class="tag">Escenario 2</span><h3>Agarre de solapa / cuello</h3><ul><li>Fija su mano contra tu pecho y gira el torso para desequilibrar.</li><li>Codazo o golpe de palma al tiempo que liberas.</li><li>Proyección o barrido y retirada.</li></ul></div>
-      <div class="card"><span class="tag">Escenario 3</span><h3>Defensa contra golpe recto</h3><ul><li>Desvía con bloqueo medio/alto y paso en diagonal (sal de la línea).</li><li>Contraataque inmediato a punto vulnerable.</li><li>Control del brazo + finalización.</li></ul></div>
-      <div class="card"><span class="tag">Escenario 4</span><h3>Abrazo / agarre por detrás</h3><ul><li>Baja el centro de gravedad y crea espacio con caderas.</li><li>Cabezazo/codazo hacia atrás, pisotón.</li><li>Gira para encarar y finaliza.</li></ul></div>
+    <div class="prose" style="margin-top:1.5rem">
+      <p style="font-size:.85rem;color:var(--muted)">Fuentes consultadas: Federación Colombiana de Taekwondo, Liga Antioqueña de Taekwondo, Secretaría de Cultura, Recreación y Deporte de Bogotá. Las fechas son de referencia histórica general.</p>
     </div>
+  </main>
+</div>
+
+<!-- ===================== ACERCA DEL MAESTRO ===================== -->
+<div class="view" id="view-maestro">
+  <main class="page">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Fundador y director técnico</div>
+      <h2>Acerca del Maestro<small>사범님 소개</small></h2>
+    </div>
+
+    <div class="img-frame" style="margin-top:0">
+      <img src="assets/master_award.png" alt="Maestro Duber Bairon Gallego Echeverry - Cinturón Negro 7° Dan">
+    </div>
+
+    <div class="master-hero">
+      <div class="master-photo">
+        <img src="assets/master_gold.png" alt="GM Duber Bairon Gallego Echeverry, Colombia">
+      </div>
+      <div>
+        <div class="prose">
+          <p>El <strong>Maestro Duber Bairon Gallego Echeverry</strong> es el fundador y presidente del Club Taekwondo Dragón Rojo. Ostenta el rango de <strong>cinturón negro 7° Dan</strong>, certificado por la <strong>Federación Colombiana de Taekwondo</strong> y por el <strong>Kukkiwon</strong> (sede mundial del taekwondo).</p>
+          <p>Ha participado en campeonatos a nivel departamental, nacional e internacional, obteniendo <strong>3 títulos mundiales</strong> y centenares de competencias ganadas a lo largo de su carrera.</p>
+        </div>
+        <div class="badge-list">
+          <div class="badge"><span class="bi">⚫</span><div><strong>Cinturón Negro 7° Dan</strong><span>Certificado por la Federación Colombiana de Taekwondo y el Kukkiwon</span></div></div>
+          <div class="badge"><span class="bi">🏆</span><div><strong>Ganador del Premio Mundial Gold Belt GM. Diegoache 2020</strong><span>World Award of Martial Arts — representando a Colombia</span></div></div>
+          <div class="badge"><span class="bi">🥇</span><div><strong>3 títulos mundiales</strong><span>Y centenares de competencias ganadas</span></div></div>
+          <div class="badge"><span class="bi">🎖️</span><div><strong>Fundador y presidente</strong><span>Club Taekwondo Dragón Rojo desde 1998</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <figure class="img-frame">
+      <img src="assets/master_cert.png" alt="El Maestro recibiendo certificación">
+      <figcaption>El Maestro Duber Bairon Gallego Echeverry recibiendo certificación oficial de manos de un Gran Maestro coreano.</figcaption>
+    </figure>
+
     <div class="callout">
-      <h4>Recomendaciones</h4>
+      <h4>Su compromiso</h4>
       <ul>
-        <li>Elige 2–3 técnicas que domines a la perfección en vez de muchas a medias.</li>
-        <li>Ensaya con compañero a baja velocidad antes de subir intensidad; cuida la seguridad de ambos.</li>
-        <li>Verbaliza/visualiza cada paso: liberación, control, golpe, salida.</li>
+        <li>Formar personas que sean siempre disciplinadas y líderes para la vida cotidiana.</li>
+        <li>Cada semestre gradúa a sus deportistas presentando exámenes y ascensos, premiando a los mejores con trofeos, certificados y medallas.</li>
       </ul>
     </div>
-  </section>
+  </main>
+</div>
 
-  <!-- PLAN SEMANAL -->
-  <section class="reveal" id="plan">
-    <div class="sec-head"><span class="sec-num">08</span><h2>Plan de las 4–6 semanas previas<small>훈련 계획 · Rutina sugerida</small></h2></div>
-    <p class="lead">Distribuye la carga para llegar afilado y sin lesiones. Ajusta los días a tu disponibilidad; lo importante es la constancia y dejar 1 día de descanso real.</p>
-    <div class="week">
-      <div class="day"><div class="d">Lun · Básicos</div><ul><li>Calentamiento + estiramiento</li><li>Básicos 1–7 (3 series)</li><li>Teoría: patadas y golpes en voz alta</li></ul></div>
-      <div class="day"><div class="d">Mar · Patrones</div><ul><li>Patrón de puños ×5</li><li>Patrón general: 2 bloques</li><li>Mapa de pisadas</li></ul></div>
-      <div class="day"><div class="d">Mié · Taegeuks</div><ul><li>Taegeuk 1–4</li><li>Repaso de significados</li><li>Movilidad</li></ul></div>
-      <div class="day"><div class="d">Jue · Combate</div><ul><li>Juego de pies + sombra</li><li>Combinaciones en paos</li><li>Cardio intervalos</li></ul></div>
-      <div class="day"><div class="d">Vie · Defensa + Taegeuks</div><ul><li>Hoshinsul con compañero</li><li>Taegeuk 5–8</li><li>Teoría: posiciones</li></ul></div>
-      <div class="day"><div class="d">Sáb · Simulacro</div><ul><li>Examen completo cronometrado</li><li>Grabar en video</li><li>Anotar fallos</li></ul></div>
-      <div class="day"><div class="d">Dom · Descanso</div><ul><li>Estiramiento suave</li><li>Repaso mental/teoría</li><li>Recuperación</li></ul></div>
+<!-- ===================== PRECIO AL MES ===================== -->
+<div class="view" id="view-precio">
+  <main class="page">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Mensualidad</div>
+      <h2>Precio al mes<small>수강료 · Plan de entrenamiento</small></h2>
+    </div>
+    <p class="lead">Una inversión en disciplina, salud y crecimiento personal. Únete al Club Dragón Rojo y empieza tu camino en el taekwondo.</p>
+
+    <div class="price-card">
+      <div class="plan">Plan mensual</div>
+      <div class="amt">$280.000<small>pesos colombianos / mes</small></div>
+      <ul>
+        <li>Dos clases por semana</li>
+        <li>Entrenamiento dirigido por el Maestro 7° Dan</li>
+        <li>Para niños (desde 4 años), jóvenes y adultos</li>
+        <li>Preparación para exámenes y ascensos</li>
+      </ul>
     </div>
 
-    <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:2.5rem 0 1rem;font-size:1.3rem">Checklist final · día del examen</h3>
-    <ul class="check">
-      <li><span class="box"></span>Dobok limpio y planchado, cinturón bien atado</li>
-      <li><span class="box"></span>Básicos 1–7 fluidos y con conteo en coreano</li>
-      <li><span class="box"></span>Patrón de puños sin titubeos, vuelta al origen</li>
-      <li><span class="box"></span>Patrón general hasta el paso 60 memorizado completo</li>
-      <li><span class="box"></span>Taegeuks 1–8 con significados y trigramas</li>
-      <li><span class="box"></span>Vocabulario teórico repasado en voz alta</li>
-      <li><span class="box"></span>Combinaciones de combate listas (2–3 encadenadas)</li>
-      <li><span class="box"></span>Secuencia de defensa personal ensayada con compañero</li>
-      <li><span class="box"></span>Hidratación, comida ligera y llegar temprano</li>
-    </ul>
-  </section>
+    <div style="text-align:center;margin-top:2rem">
+      <button class="btn btn-red" data-nav="contacto">Quiero inscribirme</button>
+    </div>
 
-</main>
+    <div class="callout">
+      <h4>¿Cómo empezar?</h4>
+      <ul>
+        <li>Comunícate con el Maestro al teléfono <strong>321 845 3231</strong> para resolver dudas y agendar tu primera clase.</li>
+        <li>Consulta horarios y disponibilidad según tu edad y nivel.</li>
+        <li>Los valores pueden estar sujetos a cambios; confirma siempre directamente con el club.</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<!-- ===================== CONTACTO Y REDES ===================== -->
+<div class="view" id="view-contacto">
+  <main class="page">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Estamos para ayudarte</div>
+      <h2>Contacto y Redes<small>연락처 · Únete a la familia Dragón Rojo</small></h2>
+    </div>
+    <p class="lead">Escríbenos o llámanos para más información sobre clases, horarios e inscripciones. Te esperamos en Envigado, Antioquia.</p>
+
+    <div class="contact-grid">
+      <a class="contact-card" href="tel:+573218453231">
+        <div class="ci">📞</div>
+        <div class="ct">Teléfono del Maestro</div>
+        <div class="cv">321 845 3231</div>
+        <div class="cs">Toca para llamar</div>
+      </a>
+      <a class="contact-card" href="https://wa.me/573218453231" target="_blank" rel="noopener">
+        <div class="ci">💬</div>
+        <div class="ct">WhatsApp</div>
+        <div class="cv">321 845 3231</div>
+        <div class="cs">Escríbenos por WhatsApp</div>
+      </a>
+      <a class="contact-card" href="https://www.facebook.com/share/g/1DidEkQLF6/" target="_blank" rel="noopener">
+        <div class="ci">📘</div>
+        <div class="ct">Grupo de Facebook</div>
+        <div class="cv">Club Dragón Rojo</div>
+        <div class="cs">Únete a nuestra comunidad</div>
+      </a>
+      <div class="contact-card" style="cursor:default">
+        <div class="ci">📍</div>
+        <div class="ct">Ubicación</div>
+        <div class="cv">Envigado, Antioquia</div>
+        <div class="cs">Colombia</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h4>Horario de atención</h4>
+      <ul>
+        <li>Para conocer los horarios exactos de clases según edad y nivel, comunícate directamente con el Maestro.</li>
+        <li>Síguenos en nuestro grupo de Facebook para enterarte de eventos, exámenes y competencias.</li>
+      </ul>
+    </div>
+  </main>
+</div>
+
+<!-- ===================== GUÍA EXAMEN CINTA NEGRA ===================== -->
+<div class="view" id="view-guia">
+  <main class="page" style="max-width:1100px">
+    <button class="back-btn" data-nav="home">← Volver al inicio</button>
+    <div class="page-head">
+      <div class="ey">Promoción · 1er Dan</div>
+      <h2>Guía Examen Promoción Cinta Negra<small>흑띠 · El camino del 1er Dan</small></h2>
+    </div>
+    <p class="lead">Programa de preparación estructurado para dominar cada uno de los siete componentes que evaluará el tribunal: básicos, patrones, taegeuks, teoría, combate y defensa personal. Trabaja despacio para la precisión, luego sube la velocidad sin perder la forma.</p>
+
+    <div class="guide-toc">
+      <a href="#g-taeguls">Taegeuks 1–8</a>
+      <a href="#g-basicos">Básicos 1–7</a>
+      <a href="#g-punos">Patrón Puños</a>
+      <a href="#g-general">Patrón General</a>
+      <a href="#g-teoria">Teoría</a>
+      <a href="#g-combate">Combate</a>
+      <a href="#g-defensa">Defensa Personal</a>
+      <a href="#g-plan">Plan Semanal</a>
+    </div>
+
+    <div class="callout">
+      <h4>Principios que el tribunal observa</h4>
+      <ul>
+        <li><strong>Precisión técnica:</strong> altura correcta de bloqueos y golpes, trayectoria de la cadera, retracción de la mano contraria.</li>
+        <li><strong>Potencia y enfoque:</strong> tensión final en el impacto, respiración y kihap coordinados.</li>
+        <li><strong>Equilibrio y posiciones:</strong> bases firmes, transiciones sin tambaleo.</li>
+        <li><strong>Espíritu indomable:</strong> actitud, mirada al frente, marcialidad constante de inicio a fin.</li>
+      </ul>
+    </div>
+
+    <!-- 1. TAEGEUKS -->
+    <section class="gsection" id="g-taeguls" style="margin-top:3rem">
+      <div class="sec-head"><span class="sec-num">01</span><h2>Taegeuks 1 al 8<small>태극 · Los 8 poomsae del Kukkiwon</small></h2></div>
+      <p class="lead">Cada taegeuk representa un trigrama del I Ching (Palgwe) y sube en complejidad. Repásalos en orden y dedica una sesión a los que peor te salgan. El número de movimientos es el estándar Kukkiwon — verifícalo con tu maestro.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Taegeuk</th><th>Trigrama</th><th>Significado</th><th>Foco técnico</th></tr></thead>
+          <tbody>
+            <tr><td><span class="kr">1 · Il Jang</span></td><td>건 Geon</td><td>Cielo / inicio</td><td>Bloqueo bajo, medio y patada frontal. Bases.</td></tr>
+            <tr><td><span class="kr">2 · I Jang</span></td><td>태 Tae</td><td>Lago / serenidad</td><td>Bloqueo alto y más golpes de puño.</td></tr>
+            <tr><td><span class="kr">3 · Sam Jang</span></td><td>리 Ri</td><td>Fuego / pasión</td><td>Mano de cuchillo, doble patada, ritmo.</td></tr>
+            <tr><td><span class="kr">4 · Sa Jang</span></td><td>진 Jin</td><td>Trueno / poder</td><td>Sonnal makgi, pyojeok chagi, golpe de lanza.</td></tr>
+            <tr><td><span class="kr">5 · O Jang</span></td><td>손 Seon</td><td>Viento</td><td>Codazos, golpe de martillo, posición baja.</td></tr>
+            <tr><td><span class="kr">6 · Yuk Jang</span></td><td>감 Gam</td><td>Agua</td><td>Patada circular (dollyo), fluidez.</td></tr>
+            <tr><td><span class="kr">7 · Chil Jang</span></td><td>간 Gan</td><td>Montaña / firmeza</td><td>Posición de gato (beom seogi), patada lateral.</td></tr>
+            <tr><td><span class="kr">8 · Pal Jang</span></td><td>곤 Gon</td><td>Tierra</td><td>Patada de salto, combinaciones completas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <h4>Estrategia de repaso</h4>
+        <ul>
+          <li>Día A: Taegeuk 1–4 fluidas + 2 detalladas. Día B: Taegeuk 5–8.</li>
+          <li>Ejecuta cada una tres veces: 1ª lenta (precisión), 2ª a ritmo de examen, 3ª con ojos en un espejo.</li>
+          <li>Memoriza significado y trigrama: el tribunal puede preguntarlo en la parte teórica.</li>
+        </ul>
+      </div>
+
+      <div class="video-block">
+        <div class="video-head"><span class="dot"></span><strong>Video guía · Taegeuk 1 al 8 (태극품새)</strong></div>
+        <div class="video-frame">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/UYlfxTCJTyQ?si=4s6GEjRVAiXapJYu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="chapters">
+          <button class="chip" type="button" data-t="0"><span class="t">Taegeuk 1</span><span class="k">태극1장 · 0:00</span></button>
+          <button class="chip" type="button" data-t="46"><span class="t">Taegeuk 2</span><span class="k">태극2장 · 0:46</span></button>
+          <button class="chip" type="button" data-t="97"><span class="t">Taegeuk 3</span><span class="k">태극3장 · 1:37</span></button>
+          <button class="chip" type="button" data-t="150"><span class="t">Taegeuk 4</span><span class="k">태극4장 · 2:30</span></button>
+          <button class="chip" type="button" data-t="203"><span class="t">Taegeuk 5</span><span class="k">태극5장 · 3:23</span></button>
+          <button class="chip" type="button" data-t="257"><span class="t">Taegeuk 6</span><span class="k">태극6장 · 4:17</span></button>
+          <button class="chip" type="button" data-t="317"><span class="t">Taegeuk 7</span><span class="k">태극7장 · 5:17</span></button>
+          <button class="chip" type="button" data-t="379"><span class="t">Taegeuk 8</span><span class="k">태극8장 · 6:19</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. BASICOS -->
+    <section class="gsection" id="g-basicos">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Básicos del 1 al 7<small>기본 · Kibon — fundamentos por niveles</small></h2></div>
+      <p class="lead">Los básicos se practican en filas, avanzando y retrocediendo en posición larga (ap-kubi). Domínalos por separado y luego en combinaciones. Cuenta en coreano en cada repetición.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Nº</th><th>Técnica base</th><th>Coreano</th><th>Puntos clave</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>Golpe de puño medio</td><td><span class="kr">몸통 지르기 · Momtong jireugi</span></td><td>Cadera, retracción del puño opuesto a la cintura.</td></tr>
+            <tr><td>2</td><td>Bloqueo bajo</td><td><span class="kr">아래 막기 · Arae makgi</span></td><td>Antebrazo termina sobre el muslo adelantado.</td></tr>
+            <tr><td>3</td><td>Bloqueo medio interno/externo</td><td><span class="kr">몸통 막기 · Momtong makgi</span></td><td>Codo doblado ~90°, puño a la altura del hombro.</td></tr>
+            <tr><td>4</td><td>Bloqueo alto</td><td><span class="kr">얼굴 막기 · Eolgul makgi</span></td><td>Antebrazo inclinado, un puño sobre la frente.</td></tr>
+            <tr><td>5</td><td>Golpe a mano de cuchillo</td><td><span class="kr">손날 치기 · Sonnal chigi</span></td><td>Borde de la mano, giro de cintura.</td></tr>
+            <tr><td>6</td><td>Patada frontal</td><td><span class="kr">앞 차기 · Ap chagi</span></td><td>Rodilla arriba, golpe con la planta (ap-chuk), retracción.</td></tr>
+            <tr><td>7</td><td>Combinación bloqueo + golpe</td><td><span class="kr">막기 + 지르기</span></td><td>Bloqueo al avanzar y contraataque inmediato.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <h4>Cómo entrenarlos</h4>
+        <ul>
+          <li>3 series de 10 repeticiones por lado, lento y con tensión final.</li>
+          <li>Fílmate de lado para revisar altura de cadera y bloqueos.</li>
+          <li>Cierra con 2 largos de la sala combinando los 7 en secuencia continua.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. PATRON PUÑOS -->
+    <section class="gsection" id="g-punos">
+      <div class="sec-head"><span class="sec-num">03</span><h2>Patrón de Puños<small>주먹 본 · Secuencia de golpes de mano</small></h2></div>
+      <p class="lead">Patrón corto centrado en golpes de puño y bloqueos de brazo, sin patadas. Busca el ritmo: bloqueo defensivo → contraataque potente → recolocación. Marca kihap en los puntos de máximo enfoque.</p>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><div><strong>Posición de atención y saludo</strong> — Charyeot / Kyeongnye. Inicio en junbi (posición lista).</div></div>
+        <div class="step"><span class="n">2</span><div><strong>Giro + bloqueo bajo</strong> hacia el primer ángulo en posición larga.</div></div>
+        <div class="step"><span class="n">3</span><div><strong>Golpe de puño medio</strong> al avanzar (momtong jireugi) con retracción firme.</div></div>
+        <div class="step"><span class="n">4</span><div><strong>Bloqueo medio</strong> al cambiar de dirección, codo a 90°.</div></div>
+        <div class="step"><span class="n">5</span><div><strong>Doble golpe</strong> de puño en el eje central — primer <em>kihap</em>.</div></div>
+        <div class="step"><span class="n">6</span><div><strong>Bloqueo alto + contragolpe</strong> en la línea de retorno.</div></div>
+        <div class="step"><span class="n">7</span><div><strong>Cierre</strong>: regreso al punto de inicio en junbi, saludo final.</div></div>
+      </div>
+      <div class="callout">
+        <h4>Detalle del examen</h4>
+        <ul>
+          <li>El tribunal valora que vuelvas exactamente al punto de partida.</li>
+          <li>Mira hacia donde vas a atacar <em>antes</em> de girar la cadera.</li>
+          <li>Confirma con tu instructor el conteo exacto de tu escuela; los nombres varían entre federaciones.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. PATRON GENERAL -->
+    <section class="gsection" id="g-general">
+      <div class="sec-head"><span class="sec-num">04</span><h2>Patrón General · hasta el paso 60<small>전체 본 · Forma extendida</small></h2></div>
+      <p class="lead">Es el bloque más largo de memorización. Divídelo en <strong>tramos de 10–12 movimientos</strong> y une un tramo nuevo solo cuando el anterior salga sin pensar. Practica el diagrama de pisadas en el suelo antes de añadir potencia.</p>
+
+      <div class="phase-title">Bloque A · pasos 1–15 — Apertura y orientación</div>
+      <p>Saludo, junbi y primer recorrido de bloqueos bajos y golpes. Fija aquí los <strong>ángulos de giro</strong> (90°, 180°, 270°). Si pierdes el ángulo al inicio, todo el patrón se desvía.</p>
+      <div class="phase-title">Bloque B · pasos 16–30 — Combinaciones medias</div>
+      <p>Aparecen bloqueos medios encadenados con golpes y la primera patada frontal. Trabaja la transición patada→aterrizaje→golpe sin pausa.</p>
+      <div class="phase-title">Bloque C · pasos 31–45 — Cambios de nivel y dirección</div>
+      <p>Secuencias con bloqueo alto, mano de cuchillo y giros amplios. Marca el <strong>primer kihap</strong> en el clímax de este bloque.</p>
+      <div class="phase-title">Bloque D · pasos 46–60 — Clímax y cierre</div>
+      <p>Combinaciones rápidas, segundo <strong>kihap</strong> y retorno al punto de origen. El paso 60 debe terminar donde empezaste, mirando al frente original.</p>
+
+      <div class="grid g3" style="margin-top:1.5rem">
+        <div class="card"><span class="tag">Método</span><h3>Mapa de pisadas</h3><p style="padding-left:.4rem;font-size:.92rem">Dibuja la "I", "+", o el diagrama de tu patrón en el piso con cinta. Camina solo los pies, sin manos, hasta memorizar la ruta.</p></div>
+        <div class="card"><span class="tag">Método</span><h3>Encadenado</h3><p style="padding-left:.4rem;font-size:.92rem">A+B, luego B+C, luego C+D, y por último completo. Nunca empieces siempre desde el paso 1.</p></div>
+        <div class="card"><span class="tag">Método</span><h3>Conteo en voz</h3><p style="padding-left:.4rem;font-size:.92rem">Di el número coreano de cada movimiento. Te ancla el ritmo y delata dónde dudas.</p></div>
+      </div>
+      <div class="callout">
+        <h4>Importante</h4>
+        <ul>
+          <li>La secuencia exacta de los 60 pasos depende de tu federación/escuela. Pídele a tu instructor el listado oficial; esta guía te da el método para memorizarlo, no la coreografía exacta.</li>
+          <li>Graba un video completo cada semana y compáralo: detectarás los pasos donde aún titubeas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. TEORIA -->
+    <section class="gsection" id="g-teoria">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Teoría Básica<small>이론 · Vocabulario coreano esencial</small></h2></div>
+      <p class="lead">Tabla de referencia rápida. Apréndela en voz alta. En el examen suelen pedir que <strong>nombres la técnica y la ejecutes</strong> a la vez.</p>
+      <div class="grid g2">
+        <div class="card">
+          <span class="tag">Patadas · Chagi</span><h3>차기</h3>
+          <ul>
+            <li><strong>Ap chagi</strong> — patada frontal (앞 차기)</li>
+            <li><strong>Dollyo chagi</strong> — patada circular (돌려 차기)</li>
+            <li><strong>Yop chagi</strong> — patada lateral (옆 차기)</li>
+            <li><strong>Dwit chagi</strong> — patada atrás (뒤 차기)</li>
+            <li><strong>Naeryo chagi</strong> — patada descendente (내려 차기)</li>
+            <li><strong>Bandal chagi</strong> — media luna</li>
+            <li><strong>Huryo chagi</strong> — gancho (후려 차기)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Golpes de mano</span><h3>지르기 · 치기</h3>
+          <ul>
+            <li><strong>Jireugi</strong> — golpe recto de puño</li>
+            <li><strong>Momtong jireugi</strong> — al tronco</li>
+            <li><strong>Eolgul jireugi</strong> — al rostro</li>
+            <li><strong>Sonnal chigi</strong> — mano de cuchillo</li>
+            <li><strong>Palkup chigi</strong> — codazo (팔꿈치)</li>
+            <li><strong>Dung jumeok</strong> — revés de puño</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Bloqueos · Makgi</span><h3>막기</h3>
+          <ul>
+            <li><strong>Arae makgi</strong> — bloqueo bajo</li>
+            <li><strong>Momtong makgi</strong> — bloqueo medio</li>
+            <li><strong>Eolgul makgi</strong> — bloqueo alto</li>
+            <li><strong>Sonnal makgi</strong> — bloqueo mano de cuchillo</li>
+            <li><strong>Hecho makgi</strong> — bloqueo en cuña/separación</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Posiciones · Seogi</span><h3>서기</h3>
+          <ul>
+            <li><strong>Ap seogi</strong> — posición corta de andar</li>
+            <li><strong>Ap kubi</strong> — posición larga adelantada</li>
+            <li><strong>Dwit kubi</strong> — posición atrasada (peso atrás)</li>
+            <li><strong>Juchum seogi</strong> — posición de jinete</li>
+            <li><strong>Beom seogi</strong> — posición de gato/tigre</li>
+            <li><strong>Moa seogi / junbi</strong> — pies juntos / listo</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <div class="card">
+          <span class="tag">Conteo coreano</span><h3>숫자 1–10</h3>
+          <ul style="columns:2">
+            <li>Hana (1)</li><li>Dul (2)</li><li>Set (3)</li><li>Net (4)</li><li>Daseot (5)</li>
+            <li>Yeoseot (6)</li><li>Ilgop (7)</li><li>Yeodeol (8)</li><li>Ahop (9)</li><li>Yeol (10)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Comandos y conceptos</span><h3>용어</h3>
+          <ul>
+            <li><strong>Charyeot</strong> — atención · <strong>Kyeongnye</strong> — saludo</li>
+            <li><strong>Junbi</strong> — preparados · <strong>Sijak</strong> — comenzar</li>
+            <li><strong>Kihap</strong> — grito de energía · <strong>Geuman</strong> — alto</li>
+            <li><strong>Dojang</strong> — sala · <strong>Dobok</strong> — uniforme · <strong>Ti</strong> — cinturón</li>
+            <li><strong>Poomsae</strong> — forma · <strong>Kyorugi</strong> — combate · <strong>Hoshinsul</strong> — defensa personal</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <h4>Significado de Taekwondo</h4>
+        <ul>
+          <li><strong>跆 Tae</strong> = golpear con el pie · <strong>拳 Kwon</strong> = golpear con la mano · <strong>道 Do</strong> = camino/disciplina. Literalmente: "el camino del pie y el puño".</li>
+          <li>Repasa los 5 principios (cortesía, integridad, perseverancia, autocontrol, espíritu indomable): suelen preguntarse.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. COMBATE -->
+    <section class="gsection" id="g-combate">
+      <div class="sec-head"><span class="sec-num">06</span><h2>Combate<small>겨루기 · Kyorugi</small></h2></div>
+      <p class="lead">Te evalúan control, distancia, variedad de técnicas y actitud, no solo ganar. Mantén la guardia, muévete con los pies, y combina patadas con desplazamiento.</p>
+      <div class="phase-title" style="margin-top:0">Reglas oficiales · World Taekwondo (WT)</div>
+      <div class="grid g2" style="margin-bottom:1rem">
+        <div class="card">
+          <span class="tag">Estructura del combate</span><h3>Formato de pelea</h3>
+          <ul>
+            <li><strong>3 asaltos</strong> de <strong>2 minutos</strong> cada uno</li>
+            <li><strong>1 minuto</strong> de descanso entre asaltos</li>
+            <li>Área de combate: <strong>8 × 8 m</strong> (octagonal o cuadrada)</li>
+            <li>Árbitro central + 3–4 árbitros de esquina (sistema electrónico)</li>
+            <li>Equipo obligatorio: casco, hogu, protector de ingle, antebrazo, espinilla y bucal</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Sistema de puntuación</span><h3>Puntos válidos</h3>
+          <ul>
+            <li>🥊 <strong>Puño al tronco</strong> (hogu) — <strong>1 punto</strong></li>
+            <li>🦵 <strong>Patada al tronco</strong> (hogu) — <strong>2 puntos</strong></li>
+            <li>🔄 <strong>Patada giratoria al tronco</strong> — <strong>4 puntos</strong></li>
+            <li>🦵 <strong>Patada a la cabeza</strong> — <strong>3 puntos</strong></li>
+            <li>🔄 <strong>Patada giratoria a la cabeza</strong> — <strong>5 puntos</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid g2" style="margin-bottom:1rem">
+        <div class="card">
+          <span class="tag">Infracciones · Gam-jeom</span><h3>Penalizaciones (1 pto al rival)</h3>
+          <ul>
+            <li>Caída al suelo sin recibir golpe válido</li>
+            <li>Salir del área de combate</li>
+            <li>Agarrar, empujar o abrazar al rival</li>
+            <li>Atacar por debajo de la cintura</li>
+            <li>Atacar a un oponente caído</li>
+            <li>Golpear la espalda o la nuca</li>
+            <li>Atacar la cara del rival con la mano o el puño</li>
+            <li>Simular lesión o conducta antideportiva</li>
+            <li>No acatar la orden <em>Kalyeo</em> (parar) del árbitro</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Formas de victoria</span><h3>Cómo se gana</h3>
+          <ul>
+            <li><strong>KO</strong> — el rival no se levanta en 10 seg</li>
+            <li><strong>RSC</strong> — el árbitro detiene el combate por superioridad o seguridad</li>
+            <li><strong>PTG</strong> — diferencia de ≥ 20 puntos</li>
+            <li><strong>Puntos</strong> — mayor puntaje al final de los 3 asaltos</li>
+            <li><strong>Punto de oro</strong> — empate: asalto extra al primer punto válido</li>
+            <li><strong>Descalificación</strong> — acumulación excesiva de gam-jeom</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <h4>Zonas de puntuación válidas</h4>
+        <ul>
+          <li><strong>Tronco (hogu):</strong> zona frontal cubierta por el protector de pecho. El golpe debe impactar con fuerza suficiente para ser registrado.</li>
+          <li><strong>Cabeza:</strong> por encima del cuello, solo con patadas. Las giratorias a la cabeza suman 5 puntos.</li>
+          <li><strong>Zonas prohibidas:</strong> ingle, espalda, parte posterior de la cabeza/cuello y cualquier zona por debajo de la cintura.</li>
+        </ul>
+      </div>
+      <div class="phase-title">Técnica y táctica para el examen</div>
+      <div class="grid g3">
+        <div class="card"><span class="tag">Fundamento</span><h3>Guardia y juego de pies</h3><p style="padding-left:.4rem;font-size:.92rem">Postura ligera, peso en metatarsos. Practica paso adelante/atrás y deslizamiento lateral sin cruzar los pies.</p></div>
+        <div class="card"><span class="tag">Ataque</span><h3>Combinaciones</h3><p style="padding-left:.4rem;font-size:.92rem">Dollyo doble, dollyo + giro (dwit/huryo), patada de avance (bandal). Encadena 2–3 técnicas.</p></div>
+        <div class="card"><span class="tag">Defensa</span><h3>Contraataque</h3><p style="padding-left:.4rem;font-size:.92rem">Esquiva con paso atrás y responde con dollyo de pierna trasera. Trabaja el "cut kick" para frenar la entrada del rival.</p></div>
+      </div>
+      <div class="callout">
+        <h4>Acondicionamiento para el combate</h4>
+        <ul>
+          <li>Rounds de sombra de 2 min × 3, con 1 min de descanso, imitando el ritmo del examen.</li>
+          <li>Trabajo en paos/escudo: 10 series de combinaciones para potencia y aire.</li>
+          <li>Cardio a intervalos 2 veces por semana para no cansarte en el examen.</li>
+          <li>Control: en examen, contacto medido. Demuestra técnica, no agresión descontrolada.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 7. DEFENSA PERSONAL -->
+    <section class="gsection" id="g-defensa">
+      <div class="sec-head"><span class="sec-num">07</span><h2>Defensa Personal<small>호신술 · Hoshinsul</small></h2></div>
+      <p class="lead">Prepara una secuencia limpia y memorizada ante un agarre o ataque. Estructura siempre: <strong>liberación → control → técnica de finalización → distancia segura</strong>.</p>
+      <div class="grid g2">
+        <div class="card"><span class="tag">Escenario 1</span><h3>Agarre de muñeca</h3><ul><li>Gira la muñeca hacia el pulgar del agresor para liberar.</li><li>Atrapa su mano y aplica palanca (control de muñeca).</li><li>Patada o golpe de control y desplázate fuera de su alcance.</li></ul></div>
+        <div class="card"><span class="tag">Escenario 2</span><h3>Agarre de solapa / cuello</h3><ul><li>Fija su mano contra tu pecho y gira el torso para desequilibrar.</li><li>Codazo o golpe de palma al tiempo que liberas.</li><li>Proyección o barrido y retirada.</li></ul></div>
+        <div class="card"><span class="tag">Escenario 3</span><h3>Defensa contra golpe recto</h3><ul><li>Desvía con bloqueo medio/alto y paso en diagonal (sal de la línea).</li><li>Contraataque inmediato a punto vulnerable.</li><li>Control del brazo + finalización.</li></ul></div>
+        <div class="card"><span class="tag">Escenario 4</span><h3>Abrazo / agarre por detrás</h3><ul><li>Baja el centro de gravedad y crea espacio con caderas.</li><li>Cabezazo/codazo hacia atrás, pisotón.</li><li>Gira para encarar y finaliza.</li></ul></div>
+      </div>
+      <div class="callout">
+        <h4>Recomendaciones</h4>
+        <ul>
+          <li>Elige 2–3 técnicas que domines a la perfección en vez de muchas a medias.</li>
+          <li>Ensaya con compañero a baja velocidad antes de subir intensidad; cuida la seguridad de ambos.</li>
+          <li>Verbaliza/visualiza cada paso: liberación, control, golpe, salida.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PLAN SEMANAL -->
+    <section class="gsection" id="g-plan">
+      <div class="sec-head"><span class="sec-num">08</span><h2>Plan de las 4–6 semanas previas<small>훈련 계획 · Rutina sugerida</small></h2></div>
+      <p class="lead">Distribuye la carga para llegar afilado y sin lesiones. Ajusta los días a tu disponibilidad; lo importante es la constancia y dejar 1 día de descanso real.</p>
+      <div class="week">
+        <div class="day"><div class="d">Lun · Básicos</div><ul><li>Calentamiento + estiramiento</li><li>Básicos 1–7 (3 series)</li><li>Teoría: patadas y golpes en voz alta</li></ul></div>
+        <div class="day"><div class="d">Mar · Patrones</div><ul><li>Patrón de puños ×5</li><li>Patrón general: 2 bloques</li><li>Mapa de pisadas</li></ul></div>
+        <div class="day"><div class="d">Mié · Taegeuks</div><ul><li>Taegeuk 1–4</li><li>Repaso de significados</li><li>Movilidad</li></ul></div>
+        <div class="day"><div class="d">Jue · Combate</div><ul><li>Juego de pies + sombra</li><li>Combinaciones en paos</li><li>Cardio intervalos</li></ul></div>
+        <div class="day"><div class="d">Vie · Defensa + Taegeuks</div><ul><li>Hoshinsul con compañero</li><li>Taegeuk 5–8</li><li>Teoría: posiciones</li></ul></div>
+        <div class="day"><div class="d">Sáb · Simulacro</div><ul><li>Examen completo cronometrado</li><li>Grabar en video</li><li>Anotar fallos</li></ul></div>
+        <div class="day"><div class="d">Dom · Descanso</div><ul><li>Estiramiento suave</li><li>Repaso mental/teoría</li><li>Recuperación</li></ul></div>
+      </div>
+      <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:2.5rem 0 1rem;font-size:1.3rem">Checklist final · día del examen</h3>
+      <ul class="check">
+        <li><span class="box"></span>Dobok limpio y planchado, cinturón bien atado</li>
+        <li><span class="box"></span>Básicos 1–7 fluidos y con conteo en coreano</li>
+        <li><span class="box"></span>Patrón de puños sin titubeos, vuelta al origen</li>
+        <li><span class="box"></span>Patrón general hasta el paso 60 memorizado completo</li>
+        <li><span class="box"></span>Taegeuks 1–8 con significados y trigramas</li>
+        <li><span class="box"></span>Vocabulario teórico repasado en voz alta</li>
+        <li><span class="box"></span>Combinaciones de combate listas (2–3 encadenadas)</li>
+        <li><span class="box"></span>Secuencia de defensa personal ensayada con compañero</li>
+        <li><span class="box"></span>Hidratación, comida ligera y llegar temprano</li>
+      </ul>
+    </section>
+  </main>
+</div>
 
 <footer>
+  <img class="flogo" src="assets/logo.png" alt="Logo">
   <p><strong>충! 화이팅!</strong></p>
-  <p style="margin-top:.6rem">Guía de preparación para examen de cinta negra · 1er Dan. Confirma siempre las secuencias exactas (patrón general y conteos) con tu instructor, ya que varían entre federaciones y escuelas.</p>
+  <p style="margin-top:.6rem">Club Taekwondo Dragón Rojo · Envigado, Antioquia · Afiliado a la Liga Antioqueña de Taekwondo.</p>
+  <p style="margin-top:.4rem">Maestro Duber Bairon Gallego Echeverry · 7° Dan · Tel. <a href="tel:+573218453231">321 845 3231</a></p>
+  <p style="margin-top:.4rem;font-size:.78rem;opacity:.8">Las secuencias exactas de patrones y conteos varían entre federaciones; confírmalas siempre con tu instructor.</p>
 </footer>
 
 <script>
-  // reveal on scroll
+  // ===== Router de vistas =====
+  const views = document.querySelectorAll('.view');
+  const navBtns = document.querySelectorAll('nav.mainnav button');
+
+  function showView(name){
+    views.forEach(v=>v.classList.remove('active'));
+    const target = document.getElementById('view-'+name);
+    if(target) target.classList.add('active');
+    navBtns.forEach(b=>b.classList.toggle('active', b.dataset.nav===name));
+    window.scrollTo({top:0,behavior:'instant'});
+    // cierra menú móvil
+    document.getElementById('mainnav').classList.remove('open');
+  }
+
+  document.querySelectorAll('[data-nav]').forEach(el=>{
+    el.addEventListener('click', e=>{ e.preventDefault(); showView(el.dataset.nav); });
+  });
+
+  // menú hamburguesa
+  document.getElementById('menuToggle').addEventListener('click', ()=>{
+    document.getElementById('mainnav').classList.toggle('open');
+  });
+
+  // ===== reveal on scroll =====
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target);} });
   },{threshold:.12});
-  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i*0.04)+'s'; io.observe(el); });
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i*0.05)+'s'; io.observe(el); });
 
-  // checklist toggle
+  // ===== checklist toggle =====
   document.querySelectorAll('.check li').forEach(li=>{
-    li.style.cursor='pointer';
     li.addEventListener('click',()=>{
       const box=li.querySelector('.box');
       const on=box.style.background==='var(--red)';
@@ -628,42 +1008,18 @@
       li.style.textDecoration=on?'none':'line-through';
     });
   });
-  // ===== Reproductor YouTube: saltar a cada taegeuk =====
-  var ytPlayer;
-  var ytReady = false;
 
-  // Carga la API de YouTube de forma asíncrona
-  var tag = document.createElement('script');
-  tag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(tag);
-
-  // Callback requerido por la API
-  window.onYouTubeIframeAPIReady = function() {
-    ytPlayer = new YT.Player('ytPlayer', {
-      videoId: 'UYlfxTCJTyQ',
-      playerVars: {
-        rel: 0,
-        modestbranding: 1,
-        playsinline: 1
-      },
-      events: {
-        onReady: function() { ytReady = true; }
-      }
-    });
-  };
-
+  // ===== Chips para navegación dentro de guía (navegación visual) =====
   document.querySelectorAll('.chip').forEach(chip=>{
     chip.addEventListener('click',()=>{
-      const t = parseInt(chip.dataset.t, 10);
+      const targetId = chip.dataset.t;
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
-      if(ytReady && ytPlayer){
-        ytPlayer.seekTo(t, true);
-        ytPlayer.playVideo();
-        document.getElementById('ytPlayer').scrollIntoView({behavior:'smooth', block:'center'});
-      }
+      // Scroll hacia la sección de video
+      document.querySelector('.video-frame').scrollIntoView({behavior:'smooth', block:'center'});
     });
   });
+
 </script>
 </body>
 </html>
