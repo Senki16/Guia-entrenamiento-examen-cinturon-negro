@@ -300,6 +300,56 @@
   .check li{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.7rem 1rem;display:flex;align-items:center;gap:.8rem;font-weight:600;box-shadow:0 1px 5px var(--shadow);font-size:.95rem;cursor:pointer}
   .check li .box{width:20px;height:20px;border:2px solid var(--red);border-radius:5px;flex-shrink:0}
 
+  /* ===== GALERIAS ESTETICAS ===== */
+  .section-title{
+    font-family:'Anton';font-weight:400;text-transform:uppercase;
+    font-size:clamp(1.4rem,3.5vw,2rem);letter-spacing:.04em;
+    margin:3rem 0 .4rem;line-height:1.1;display:flex;align-items:center;gap:.8rem;
+  }
+  .section-title::before{
+    content:"";width:8px;height:28px;background:var(--red);border-radius:2px;display:inline-block;
+  }
+  .section-title small{display:block;font-family:'Noto Serif KR',serif;font-size:.82rem;color:var(--muted);letter-spacing:.06em;font-weight:400;margin-top:.2rem}
+  .section-intro{color:#3a382f;font-size:.98rem;max-width:760px;margin:0 0 1.4rem 1.7rem;}
+  .gallery{
+    display:grid;gap:1rem;margin:1rem 0 2rem;
+    grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  }
+  .gallery.featured{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .gallery .tile{
+    position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;box-shadow:0 3px 14px var(--shadow);
+    transition:transform .25s ease, box-shadow .25s ease;display:flex;flex-direction:column;
+  }
+  .gallery .tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px var(--shadow)}
+  .gallery .tile .ph{
+    width:100%;aspect-ratio:4/3;overflow:hidden;background:#0a0a0c;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .gallery .tile .ph img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+  .gallery .tile:hover .ph img{transform:scale(1.05)}
+  .gallery .tile figcaption{
+    padding:.75rem .9rem;font-size:.82rem;color:#46443b;background:#fff;
+    border-top:2px solid var(--red);line-height:1.4;flex:1;
+  }
+  .gallery.portrait .tile .ph{aspect-ratio:3/4}
+  .gallery.square .tile .ph{aspect-ratio:1/1}
+
+  /* Banner reducido */
+  .banner-compact{max-width:760px;margin:1.4rem auto;border-radius:14px;overflow:hidden;
+    border:1px solid var(--line);box-shadow:0 6px 22px var(--shadow)}
+  .banner-compact img{width:100%;display:block}
+
+  /* Contacto con promocional */
+  .contact-layout{display:grid;grid-template-columns:1fr 320px;gap:2rem;align-items:start;margin-top:1rem}
+  @media(max-width:860px){.contact-layout{grid-template-columns:1fr}}
+  .promo-side{position:sticky;top:90px;background:#fff;border:1px solid var(--line);
+    border-radius:16px;overflow:hidden;box-shadow:0 8px 26px var(--shadow);border-top:4px solid var(--red)}
+  .promo-side img{width:100%;display:block}
+  .promo-side .promo-cap{padding:.9rem 1rem;text-align:center;background:linear-gradient(180deg,#fff,#f7f3ea)}
+  .promo-side .promo-cap .pt{font-family:'Anton';color:var(--red);text-transform:uppercase;font-size:1rem;letter-spacing:.04em}
+  .promo-side .promo-cap .ps{font-size:.78rem;color:var(--muted);margin-top:.2rem}
+
   footer{background:var(--ink);color:#9a948a;text-align:center;padding:2.6rem 1.5rem;font-size:.85rem;position:relative;z-index:2;border-top:4px solid var(--red)}
   footer .flogo{width:60px;height:60px;border-radius:50%;margin:0 auto 1rem;background:#000}
   footer strong{color:var(--gold);font-family:'Anton';letter-spacing:.05em;font-weight:400}
@@ -387,7 +437,7 @@
       <p>Estamos afiliados a la <strong>Liga Antioqueña de Taekwondo</strong> y contamos con reconocimiento deportivo del <strong>INDER</strong> del municipio de Envigado. A lo largo de nuestra trayectoria hemos formado a más de <strong>850 deportistas</strong> y graduado a más de <strong>17 alumnos a cinturón negro</strong>, representando a Antioquia y a Colombia a nivel departamental, nacional e internacional.</p>
     </div>
 
-    <div class="img-frame">
+    <div class="banner-compact">
       <img src="assets/banner.png" alt="Historia del Club Taekwondo Dragón Rojo">
     </div>
 
@@ -420,10 +470,91 @@
       </div>
     </div>
 
-    <figure class="img-frame">
-      <img src="assets/recoocimiento_al_club.png" alt="Reconocimiento al Club Taekwondo Dragón Rojo">
-      <figcaption>Reconocimiento oficial otorgado al Club Taekwondo Dragón Rojo.</figcaption>
-    </figure>
+    <!-- RECONOCIMIENTOS AL CLUB -->
+    <h3 class="section-title">Reconocimientos al Club<small>클럽 공로상 · Distinciones recibidas</small></h3>
+    <p class="section-intro">A lo largo de nuestra historia, instituciones y ligas oficiales han reconocido el trabajo del Club Dragón Rojo en la formación deportiva y la promoción del taekwondo en Antioquia.</p>
+    <div class="gallery featured">
+      <figure class="tile">
+        <div class="ph"><img src="assets/recoocimiento_al_club.png" alt="Reconocimiento al Club Taekwondo Dragón Rojo"></div>
+        <figcaption>Reconocimiento oficial otorgado al Club Taekwondo Dragón Rojo por su trayectoria.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/reconocimiento_liga.png" alt="Reconocimiento Liga Antioqueña de Taekwondo"></div>
+        <figcaption>Reconocimiento de la Liga Antioqueña de Taekwondo al trabajo del club.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/diploma_liga_antioquena_master.png" alt="Diploma Liga Antioqueña"></div>
+        <figcaption>Diploma de la Liga Antioqueña de Taekwondo en honor al Club y su dirección técnica.</figcaption>
+      </figure>
+    </div>
+
+    <!-- EXAMENES DE ASCENSO -->
+    <h3 class="section-title">Exámenes de Ascenso<small>승급 심사 · Promoción de grados</small></h3>
+    <p class="section-intro">Cada semestre nuestros alumnos presentan exámenes de ascenso para escalar en la jerarquía de cinturones. Estas ceremonias son un punto culminante en el camino marcial: combinan técnica, disciplina y compromiso.</p>
+    <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/examen_ascenso_grado_alumnos_del_maestro.png" alt="Examen de ascenso de grado"></div>
+        <figcaption>Grupo de alumnos presentando su examen semestral de ascenso de grado.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/examen_ascenso_grado_alumnos_del_maestro_2.png" alt="Examen de ascenso de grado alumnos"></div>
+        <figcaption>Evaluación técnica y demostración de rompimientos durante el examen.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/exxamendeascenso.png" alt="Examen de ascenso taekwondo"></div>
+        <figcaption>Presentación de defensas y poomsaes ante el tribunal evaluador.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/cinturon_negro_1_dan_otorgado_alumna.png" alt="Cinturón negro 1er Dan otorgado a alumna"></div>
+        <figcaption>Entrega del cinturón negro 1er Dan a una de nuestras alumnas graduadas.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/cinturon_negro_1_dan_otorgado_alumna_Vanessa.png" alt="Alumna Vanessa 1er Dan"></div>
+        <figcaption>Alumna Vanessa recibiendo su certificación oficial de Cinturón Negro 1er Dan.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/4dan_obtenido_sergio_mejia_examenascenso.png" alt="Sergio Mejía 4to Dan"></div>
+        <figcaption>Sergio Mejía recibe su certificación oficial de Cinturón Negro 4° Dan.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/4dan_otorgado_examen_ascenso_alumno.png" alt="Examen de ascenso 4to Dan alumno"></div>
+        <figcaption>Ceremonia de entrega del grado 4° Dan a alumno destacado del club.</figcaption>
+      </figure>
+    </div>
+
+    <!-- NUESTROS ALUMNOS -->
+    <h3 class="section-title">Nuestros Alumnos<small>우리 학생들 · La familia Dragón Rojo</small></h3>
+    <p class="section-intro">El corazón del club son sus alumnos: niños, jóvenes y adultos que cada semana entrenan con disciplina y forjan su carácter. Aquí están sus mejores momentos en entrenamientos, seminarios y competencias.</p>
+    <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_entreno.png" alt="Maestro en entrenamiento con alumnos"></div>
+        <figcaption>Clases dirigidas por el Maestro en el dojang del club.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/Seminario_entrenamiento_con_alumnas.png" alt="Seminario de entrenamiento con alumnas"></div>
+        <figcaption>Seminario técnico especializado con las alumnas del dojang.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/foto_coreano.png" alt="Entrenamiento con maestros coreanos"></div>
+        <figcaption>Fotografía grupal junto a maestros coreanos en un seminario formativo.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/training_camp.png" alt="Delegación en Training Camp"></div>
+        <figcaption>Delegación del club en un campamento internacional de entrenamiento.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/alumna_medalla_oro_poomsae.png" alt="Alumna medalla de oro poomsae"></div>
+        <figcaption>Alumna campeona — medalla de oro en competencia de poomsae.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/alumna_medalla_plata_poomsae.png" alt="Alumna medalla de plata poomsae"></div>
+        <figcaption>Alumna con medalla de plata en torneo regional de poomsae.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/medalla_plata_poomsae_alumno.png" alt="Alumno medalla de plata poomsae"></div>
+        <figcaption>Alumno con medalla de plata en la modalidad de poomsae.</figcaption>
+      </figure>
+    </div>
 
     <div class="callout">
       <h4>El deporte y la mente sana</h4>
@@ -509,147 +640,111 @@
       </ul>
     </div>
 
-    <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:3rem 0 1rem;font-size:1.35rem;border-bottom:2px solid var(--line);padding-bottom:0.5rem">Logros y Trayectoria</h3>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-bottom:2rem">
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_frontal.png" alt="Maestro Duber Bairon Gallego - Patada en el dojang">
-        <figcaption>Demostración de patada alta en el dojang.</figcaption>
+    <!-- 1. LOGROS Y TRAYECTORIA -->
+    <h3 class="section-title">Logros y Trayectoria<small>업적과 경력 · Carrera del Maestro</small></h3>
+    <p class="section-intro">Décadas de dedicación al taekwondo lo han llevado a compartir el dojang con grandes maestros y figuras del arte marcial coreano a nivel nacional e internacional.</p>
+    <div class="gallery featured">
+      <figure class="tile">
+        <div class="ph"><img src="assets/premio_diegoache_master.png" alt="Premio Gold Belt Diegoache"></div>
+        <figcaption>Premio Mundial Gold Belt GM. Diegoache 2020 — reconocimiento internacional.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_cert.png" alt="El Maestro recibiendo certificación">
-        <figcaption>Certificación oficial recibida de un Gran Maestro coreano.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/con_maestro_Moustapha_Akkouh.png" alt="Maestro Duber Bairon Gallego con Maestro Moustapha Akkouh"></div>
+        <figcaption>Capacitación internacional junto al Maestro Moustapha Akkouh.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_patada.png" alt="Maestro Duber Bairon Gallego - Patada Alta">
-        <figcaption>Patada lateral (yop chagi) con técnica depurada.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_con_oscarposada.png" alt="El Maestro con Oscar Posada"></div>
+        <figcaption>El Maestro junto al destacado maestro Oscar Posada.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_estirando.png" alt="Maestro Duber Bairon Gallego - Estirando">
-        <figcaption>El Maestro en sesión de estiramiento y acondicionamiento físico.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_Young_Gi_Jeon.png" alt="Gran Maestro Young Gi Jeon"></div>
+        <figcaption>Encuentro con el Gran Maestro Young Gi Jeon, referente mundial del taekwondo.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/con_maestro_Moustapha_Akkouh.png" alt="Maestro Duber Bairon Gallego con Maestro Moustapha Akkouh">
-        <figcaption>Capacitación internacional junto al maestro Moustapha Akkouh.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_coreano_que_trajo_taekwondo_a_colombia.png" alt="Maestro Coreano en Colombia"></div>
+        <figcaption>Junto al Maestro coreano pionero que introdujo el taekwondo en Colombia.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/certificado_training_camp.png" alt="Certificado Training Camp">
-        <figcaption>Certificado oficial de participación en Training Camp internacional.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/reconocimiento_liga.png" alt="Reconocimiento Liga Antioqueña de Taekwondo">
-        <figcaption>Reconocimiento oficial por la Liga Antioqueña de Taekwondo.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/open_internacional.png" alt="Open Internacional de Taekwondo">
-        <figcaption>Participaciones e insignias en el Open Internacional.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_con_oscarposada.png" alt="El Maestro con Oscar Posada">
-        <figcaption>El Maestro junto al maestro Oscar Posada.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/cert_coreano.png" alt="Certificación Internacional de Taekwondo">
-        <figcaption>Certificado oficial de la federación y homologación internacional.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_Young_Gi_Jeon.png" alt="Gran Maestro Young Gi Jeon">
-        <figcaption>Gran Maestro Young Gi Jeon, referente de entrenamiento.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_coreano_que_trajo_taekwondo_a_colombia.png" alt="Maestro Coreano en Colombia">
-        <figcaption>Maestro coreano pionero que introdujo el taekwondo en el país.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/medallas_master.png" alt="Medallas del Maestro">
-        <figcaption>Medallas de oro y galardones obtenidos por el Maestro.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/trofeos_master.png" alt="Trofeos del Maestro">
-        <figcaption>Trofeos y copas en reconocimiento a su trayectoria.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/trofeos_master_2.png" alt="Trofeos del Maestro 2">
-        <figcaption>Trofeos y copas en exhibición en el dojang.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/trofeos_master_3.png" alt="Trofeos del Maestro 3">
-        <figcaption>Colección adicional de trofeos del Maestro.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/premio_diegoache_master.png" alt="Premio Gold Belt Diegoache">
-        <figcaption>Premio Mundial Gold Belt GM. Diegoache 2020.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/diploma_liga_antioquena_master.png" alt="Diploma Liga Antioqueña">
-        <figcaption>Diploma y distinción otorgados al Maestro por la Liga Antioqueña.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/certificado_master.png" alt="Certificado del Maestro">
-        <figcaption>Certificación oficial y homologación de grados del Maestro.</figcaption>
-      </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/trofeos_master-4.png" alt="Trofeos del Maestro 4">
-        <figcaption>Exhibición de copas de torneos en la vitrina del club.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/open_internacional.png" alt="Open Internacional de Taekwondo"></div>
+        <figcaption>Participación e insignias del Open Internacional de Taekwondo.</figcaption>
       </figure>
     </div>
 
-    <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:3rem 0 1rem;font-size:1.35rem;border-bottom:2px solid var(--line);padding-bottom:0.5rem">Nuestros Alumnos</h3>
-    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;margin-bottom:2rem">
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/master_entreno.png" alt="Maestro Duber Bairon Gallego - Entrenamiento en dojang">
-        <figcaption>Clases de entrenamiento y dirección técnica de alumnos en el dojang.</figcaption>
+    <!-- 2. CERTIFICADOS -->
+    <h3 class="section-title">Certificados<small>자격증 · Acreditaciones oficiales</small></h3>
+    <p class="section-intro">El Maestro cuenta con certificaciones oficiales de la Federación Colombiana de Taekwondo, el Kukkiwon y diplomas internacionales que respaldan su trayectoria y grado.</p>
+    <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/certificado_master.png" alt="Certificado del Maestro"></div>
+        <figcaption>Certificación oficial y homologación de grados del Maestro.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/foto_coreano.png" alt="Entrenamiento con Maestros Fundadores">
-        <figcaption>Seminario formativo y fotografía grupal con maestros coreanos fundadores.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/certificado_amster.png" alt="Certificado del Maestro - Adicional"></div>
+        <figcaption>Certificación adicional de grado y formación marcial del Maestro.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/4dan_obtenido_sergio_mejia_examenascenso.png" alt="Sergio Mejía 4to Dan">
-        <figcaption>Sergio Mejía recibe su certificación de Cinturón Negro 4° Dan.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_cert.png" alt="El Maestro recibiendo certificación"></div>
+        <figcaption>Certificación oficial recibida de un Gran Maestro coreano.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/4dan_otorgado_examen_ascenso_alumno.png" alt="Examen de ascenso 4to Dan alumno">
-        <figcaption>Ceremonia de entrega del grado 4° Dan a alumno del club.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/cert_coreano.png" alt="Certificación Internacional de Taekwondo"></div>
+        <figcaption>Certificado oficial de la federación y homologación internacional.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/cinturon_negro_1_dan_otorgado_alumna.png" alt="Cinturón negro 1er Dan otorgado alumna">
-        <figcaption>Entrega de certificación y cinturón negro 1er Dan a alumna graduada.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/certificado_training_camp.png" alt="Certificado Training Camp"></div>
+        <figcaption>Certificado oficial de participación en Training Camp internacional.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/cinturon_negro_1_dan_otorgado_alumna_Vanessa.png" alt="Alumna Vanessa 1er Dan">
-        <figcaption>Alumna Vanessa recibiendo su grado oficial de Cinturón Negro 1er Dan.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/diploma_liga_antioquena_master.png" alt="Diploma Liga Antioqueña"></div>
+        <figcaption>Diploma y distinción otorgados al Maestro por la Liga Antioqueña.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/examen_ascenso_grado_alumnos_del_maestro.png" alt="Examen de ascenso de grado">
-        <figcaption>Grupo de alumnos presentando sus exámenes semestrales de ascenso.</figcaption>
+    </div>
+
+    <!-- 3. ENTRENAMIENTO -->
+    <h3 class="section-title">Entrenamiento<small>훈련 · Técnica del Maestro</small></h3>
+    <p class="section-intro">El Maestro continúa entrenando y perfeccionando sus técnicas día a día — ejemplo de disciplina, precisión y espíritu indomable.</p>
+    <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_frontal.png" alt="Maestro Duber Bairon Gallego - Patada en el dojang"></div>
+        <figcaption>Demostración de patada alta frontal con perfecto control corporal.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/examen_ascenso_grado_alumnos_del_maestro_2.png" alt="Examen de ascenso de grado alumnos">
-        <figcaption>Evaluación técnica y demostración de rompimientos en examen.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_patada.png" alt="Maestro Duber Bairon Gallego - Patada Lateral"></div>
+        <figcaption>Patada lateral (yop chagi) ejecutada con técnica depurada.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/exxamendeascenso.png" alt="Examen de ascenso taekwondo">
-        <figcaption>Presentación de defensas y poomsaes en examen formal.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_estirando.png" alt="Maestro Duber Bairon Gallego - Estirando"></div>
+        <figcaption>Sesión de estiramiento y acondicionamiento físico antes del entrenamiento.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/Seminario_entrenamiento_con_alumnas.png" alt="Seminario de entrenamiento con alumnas">
-        <figcaption>Seminario técnico especializado con las alumnas del dojang.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/master_entreno.png" alt="Maestro en entrenamiento"></div>
+        <figcaption>El Maestro entrenando y dirigiendo la técnica dentro del dojang.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/alumna_medalla_oro_poomsae.png" alt="Alumna medalla de oro poomsae">
-        <figcaption>Alumna ganadora de medalla de oro en competencia de poomsae.</figcaption>
+    </div>
+
+    <!-- 4. TROFEOS Y MEDALLAS -->
+    <h3 class="section-title">Trofeos y Medallas<small>트로피 메달 · Galardones obtenidos</small></h3>
+    <p class="section-intro">Centenares de competencias ganadas y tres títulos mundiales respaldan al Maestro. Esta colección es el testimonio físico de su carrera deportiva.</p>
+    <div class="gallery">
+      <figure class="tile">
+        <div class="ph"><img src="assets/medallas_master.png" alt="Medallas del Maestro"></div>
+        <figcaption>Medallas de oro y galardones obtenidos por el Maestro en competencias.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/alumna_medalla_plata_poomsae.png" alt="Alumna medalla de plata poomsae">
-        <figcaption>Alumna ganadora de medalla de plata en torneo regional.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/trofeos_master.png" alt="Trofeos del Maestro"></div>
+        <figcaption>Trofeos y copas en reconocimiento a su trayectoria deportiva.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/medalla_plata_poomsae_alumno.png" alt="Alumno medalla de plata poomsae">
-        <figcaption>Alumno con medalla de plata en la modalidad de poomsae.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/trofeos_master_2.png" alt="Trofeos del Maestro 2"></div>
+        <figcaption>Trofeos y copas en exhibición en el dojang del club.</figcaption>
       </figure>
-      <figure class="img-frame" style="margin:0">
-        <img src="assets/training_camp.png" alt="Delegación en Training Camp">
-        <figcaption>Delegación del club en el campamento internacional de entrenamiento.</figcaption>
+      <figure class="tile">
+        <div class="ph"><img src="assets/trofeos_master_3.png" alt="Trofeos del Maestro 3"></div>
+        <figcaption>Colección adicional de trofeos obtenidos a lo largo de su carrera.</figcaption>
+      </figure>
+      <figure class="tile">
+        <div class="ph"><img src="assets/trofeos_master-4.png" alt="Trofeos del Maestro 4"></div>
+        <figcaption>Exhibición de copas de torneos en la vitrina del club.</figcaption>
       </figure>
     </div>
   </main>
@@ -701,39 +796,51 @@
     </div>
     <p class="lead">Escríbenos o llámanos para más información sobre clases, horarios e inscripciones. Te esperamos en Envigado, Antioquia.</p>
 
-    <div class="contact-grid">
-      <a class="contact-card" href="tel:+573218453231">
-        <div class="ci">📞</div>
-        <div class="ct">Teléfono del Maestro</div>
-        <div class="cv">321 845 3231</div>
-        <div class="cs">Toca para llamar</div>
-      </a>
-      <a class="contact-card" href="https://wa.me/573218453231" target="_blank" rel="noopener">
-        <div class="ci">💬</div>
-        <div class="ct">WhatsApp</div>
-        <div class="cv">321 845 3231</div>
-        <div class="cs">Escríbenos por WhatsApp</div>
-      </a>
-      <a class="contact-card" href="https://www.facebook.com/share/g/1DidEkQLF6/" target="_blank" rel="noopener">
-        <div class="ci">📘</div>
-        <div class="ct">Grupo de Facebook</div>
-        <div class="cv">Club Dragón Rojo</div>
-        <div class="cs">Únete a nuestra comunidad</div>
-      </a>
-      <div class="contact-card" style="cursor:default">
-        <div class="ci">📍</div>
-        <div class="ct">Ubicación</div>
-        <div class="cv">Envigado, Antioquia</div>
-        <div class="cs">Colombia</div>
-      </div>
-    </div>
+    <div class="contact-layout">
+      <div>
+        <div class="contact-grid">
+          <a class="contact-card" href="tel:+573218453231">
+            <div class="ci">📞</div>
+            <div class="ct">Teléfono del Maestro</div>
+            <div class="cv">321 845 3231</div>
+            <div class="cs">Toca para llamar</div>
+          </a>
+          <a class="contact-card" href="https://wa.me/573218453231" target="_blank" rel="noopener">
+            <div class="ci">💬</div>
+            <div class="ct">WhatsApp</div>
+            <div class="cv">321 845 3231</div>
+            <div class="cs">Escríbenos por WhatsApp</div>
+          </a>
+          <a class="contact-card" href="https://www.facebook.com/share/g/1DidEkQLF6/" target="_blank" rel="noopener">
+            <div class="ci">📘</div>
+            <div class="ct">Grupo de Facebook</div>
+            <div class="cv">Club Dragón Rojo</div>
+            <div class="cs">Únete a nuestra comunidad</div>
+          </a>
+          <div class="contact-card" style="cursor:default">
+            <div class="ci">📍</div>
+            <div class="ct">Ubicación</div>
+            <div class="cv">Envigado, Antioquia</div>
+            <div class="cs">Colombia</div>
+          </div>
+        </div>
 
-    <div class="callout">
-      <h4>Horario de atención</h4>
-      <ul>
-        <li>Para conocer los horarios exactos de clases según edad y nivel, comunícate directamente con el Maestro.</li>
-        <li>Síguenos en nuestro grupo de Facebook para enterarte de eventos, exámenes y competencias.</li>
-      </ul>
+        <div class="callout">
+          <h4>Horario de atención</h4>
+          <ul>
+            <li>Para conocer los horarios exactos de clases según edad y nivel, comunícate directamente con el Maestro.</li>
+            <li>Síguenos en nuestro grupo de Facebook para enterarte de eventos, exámenes y competencias.</li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="promo-side">
+        <img src="assets/promocional_club.png" alt="Imagen promocional del Maestro y Club Dragón Rojo">
+        <div class="promo-cap">
+          <div class="pt">¡Únete al Dragón Rojo!</div>
+          <div class="ps">Maestro Duber Bairon Gallego · 7° Dan</div>
+        </div>
+      </aside>
     </div>
   </main>
 </div>
