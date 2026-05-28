@@ -388,7 +388,7 @@
     </div>
 
     <div class="img-frame">
-      <img src="assets/historia_club.png" alt="Historia del Club Taekwondo Dragón Rojo">
+      <img src="assets/banner.png" alt="Historia del Club Taekwondo Dragón Rojo">
     </div>
 
     <div class="grid g3" style="margin-top:1.5rem">
@@ -479,12 +479,12 @@
     </div>
 
     <div class="img-frame" style="margin-top:0">
-      <img src="assets/master_award.png" alt="Maestro Duber Bairon Gallego Echeverry - Cinturón Negro 7° Dan">
+      <img src="assets/master_frontal.png" alt="Maestro Duber Bairon Gallego Echeverry - Cinturón Negro 7° Dan">
     </div>
 
     <div class="master-hero">
       <div class="master-photo">
-        <img src="assets/master_gold.png" alt="GM Duber Bairon Gallego Echeverry, Colombia">
+        <img src="assets/imagen_master.png" alt="GM Duber Bairon Gallego Echeverry, Colombia">
       </div>
       <div>
         <div class="prose">
@@ -504,6 +504,50 @@
       <img src="assets/master_cert.png" alt="El Maestro recibiendo certificación">
       <figcaption>El Maestro Duber Bairon Gallego Echeverry recibiendo certificación oficial de manos de un Gran Maestro coreano.</figcaption>
     </figure>
+
+    <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:2.5rem 0 1rem;font-size:1.3rem">Galería de Logros y Trayectoria</h3>
+    <div class="grid g2" style="margin-bottom:1.5rem">
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/master_patada.png" alt="Maestro Duber Bairon Gallego - Patada Alta">
+        <figcaption>Demostración de patada alta (yop chagi) por el Maestro Duber Bairon Gallego.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/master_entreno.png" alt="Maestro Duber Bairon Gallego - Entrenamiento en dojang">
+        <figcaption>Dirección técnica y entrenamiento en el dojang.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/reconocimiento_liga.png" alt="Reconocimiento Liga Antioqueña de Taekwondo">
+        <figcaption>Reconocimiento oficial otorgado por la Liga Antioqueña de Taekwondo.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/open_internacional.png" alt="Open Internacional de Taekwondo">
+        <figcaption>Participaciones e insignias en el Open Internacional.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/master_con_oscarposada.png" alt="El Maestro con Oscar Posada">
+        <figcaption>El Maestro Duber Bairon Gallego junto al maestro Oscar Posada.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/cert_coreano.png" alt="Certificación Internacional de Taekwondo">
+        <figcaption>Certificado oficial de la federación y homologación internacional.</figcaption>
+      </figure>
+    </div>
+
+    <h3 style="font-family:'Anton';text-transform:uppercase;letter-spacing:.04em;margin:2.5rem 0 1rem;font-size:1.3rem">Orígenes y Maestros Coreanos</h3>
+    <div class="grid g3">
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/master_Young_Gi_Jeon.png" alt="Gran Maestro Young Gi Jeon">
+        <figcaption>Gran Maestro Young Gi Jeon, referente clave en el entrenamiento del Maestro.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/foto_coreano.png" alt="Entrenamiento con Maestros Fundadores">
+        <figcaption>Fotografía histórica de entrenamiento con delegaciones y maestros fundadores.</figcaption>
+      </figure>
+      <figure class="img-frame" style="margin:0">
+        <img src="assets/master_coreano_que_trajo_taekwondo_a_colombia.png" alt="Maestro Coreano en Colombia">
+        <figcaption>El maestro coreano pionero que introdujo y formalizó el taekwondo en Colombia.</figcaption>
+      </figure>
+    </div>
 
     <div class="callout">
       <h4>Su compromiso</h4>
@@ -1015,6 +1059,11 @@
       const targetId = chip.dataset.t;
       document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
+      // Actualizar el video para que empiece en el segundo correspondiente
+      const iframe = document.querySelector('.video-frame iframe');
+      if(iframe){
+        iframe.src = `https://www.youtube.com/embed/UYlfxTCJTyQ?start=${targetId}&autoplay=1`;
+      }
       // Scroll hacia la sección de video
       document.querySelector('.video-frame').scrollIntoView({behavior:'smooth', block:'center'});
     });
