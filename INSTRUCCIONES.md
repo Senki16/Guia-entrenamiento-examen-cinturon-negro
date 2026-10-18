@@ -30,13 +30,13 @@ Guia-entrenamiento-examen-cinturon-negro/
 ├── vercel.json            ← mantener
 ├── README.md              ← mantener (ya existe)
 ├── assets/                ← carpeta nueva
-│   ├── banner.png
-│   ├── flyer.png
-│   ├── historia_club.png
-│   ├── logo.png
-│   ├── master_award.png
-│   ├── master_cert.png
-│   └── master_gold.png
+│   ├── banner.webp
+│   ├── flyer.webp
+│   ├── historia_club.webp
+│   ├── logo.webp
+│   ├── master_award.webp
+│   ├── master_cert.webp
+│   └── master_gold.webp
 └── video/                 ← mantener (ya existe, opcional)
     └── taegeuk-poomsae-1-8.mp4
 ```
